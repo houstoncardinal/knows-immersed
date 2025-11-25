@@ -137,3 +137,28 @@ All colors MUST be HSL.
     will-change: transform;
   }
 }
+
+/* Custom cursor */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid hsl(var(--neon-cyan));
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    animation: cursor-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes cursor-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+  }
+}
