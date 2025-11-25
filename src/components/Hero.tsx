@@ -1,7 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useParallax } from "@/hooks/useScrollAnimation";
+import { useEffect, useState } from "react";
 
 export const Hero = () => {
+  const offsetY = useParallax();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   const scrollToAbout = () => {
     const element = document.getElementById("about");
     if (element) {
@@ -12,22 +29,61 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 transition-transform duration-300 ease-out"
         style={{
           backgroundImage: "url('https://cdn.prod.website-files.com/603f0d7b7e27fb06f0e8ba33/6410f68e1714e4bfddcd18c3_DSC08256.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           filter: "brightness(0.4)",
+          transform: `translateY(${offsetY * 0.5}px) translate(${mousePosition.x}px, ${mousePosition.y}px) scale(1.1)`,
         }}
       />
       
       <div className="absolute inset-0 bg-gradient-to-b from-studio-darker/50 via-transparent to-studio-darker z-10" />
       
+      {/* Animated gradient overlay */}
+      <div 
+        className="absolute inset-0 z-10 opacity-30"
+        style={{
+          background: `radial-gradient(circle at ${50 + mousePosition.x}% ${50 + mousePosition.y}%, hsl(var(--neon-cyan) / 0.2), transparent 50%)`,
+        }}
+      />
+      
       <div className="relative z-20 container mx-auto px-6 text-center animate-fade-in">
+        <div className="mb-8">
+          <div className="inline-block">
+            {["K", "N", "O", "W", "S"].map((letter, i) => (
+              <span
+                key={i}
+                className="inline-block text-4xl md:text-5xl font-bold tracking-widest neon-glow-cyan"
+                style={{
+                  animation: `fade-in 0.5s ease-out ${i * 0.1}s both`,
+                  transform: `translateY(${Math.sin((offsetY + i * 100) * 0.01) * 10}px)`,
+                }}
+              >
+                {letter}
+              </span>
+            ))}
+            <span className="inline-block text-4xl md:text-5xl font-bold tracking-widest mx-2">•</span>
+            {["S", "T", "U", "D", "I", "O", "S"].map((letter, i) => (
+              <span
+                key={i + 5}
+                className="inline-block text-4xl md:text-5xl font-bold tracking-widest neon-glow-pink"
+                style={{
+                  animation: `fade-in 0.5s ease-out ${(i + 5) * 0.1}s both`,
+                  transform: `translateY(${Math.sin((offsetY + (i + 5) * 100) * 0.01) * 10}px)`,
+                }}
+              >
+                {letter}
+              </span>
+            ))}
+          </div>
+        </div>
+        
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-          <span className="block mb-2">Premier</span>
-          <span className="text-gradient-neon neon-glow-cyan block">CYC WALL</span>
-          <span className="block mt-2">Film & Photography Studio</span>
+          <span className="block mb-2 animate-slide-up" style={{ animationDelay: "0.8s" }}>Premier</span>
+          <span className="text-gradient-neon neon-glow-cyan block animate-slide-up" style={{ animationDelay: "1s" }}>CYC WALL</span>
+          <span className="block mt-2 animate-slide-up" style={{ animationDelay: "1.2s" }}>Film & Photography Studio</span>
         </h1>
         
         <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
