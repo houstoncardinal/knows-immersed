@@ -225,40 +225,78 @@ export const LuxuryHero = memo(() => {
               >
                 STUDIOS
 
-                {/* Cool Robot Graphics Sitting on the Letter */}
-                <div className="absolute -top-8 -right-12 w-16 h-16 animate-bounce" style={{ animationDuration: '2s' }}>
-                  {/* Robot Head */}
-                  <div className="relative w-full h-full">
-                    {/* Robot Face */}
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg border-2 border-cyan-300 shadow-2xl mx-auto mb-1 relative overflow-hidden">
-                      {/* Eyes */}
-                      <div className="absolute top-2 left-2 w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
-                      <div className="absolute top-2 right-2 w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+                {/* Advanced Interactive Robot Droid Sitting on the "S" */}
+                <div className="absolute -top-12 -right-8 w-20 h-20 group/robot" style={{ animation: 'robotFloat 3s ease-in-out infinite' }}>
+                  {/* Robot Droid Container */}
+                  <div className="relative w-full h-full cursor-pointer transform transition-all duration-300 group-hover/robot:scale-110">
 
-                      {/* Mouth */}
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-1 bg-cyan-600 rounded-full"></div>
-
-                      {/* Antenna */}
-                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-cyan-300"></div>
-                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full animate-ping"></div>
-                    </div>
-
-                    {/* Robot Body */}
-                    <div className="w-8 h-6 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-md mx-auto border border-cyan-400 shadow-lg relative">
-                      {/* Chest Panel */}
-                      <div className="absolute top-1 left-1/2 -translate-x-1/2 w-3 h-2 bg-cyan-300 rounded-sm border border-cyan-200">
-                        <div className="w-full h-full bg-cyan-400 rounded-sm animate-pulse opacity-75"></div>
+                    {/* Robot Body - Main Structure */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-10 bg-gradient-to-b from-slate-700 to-slate-900 rounded-lg border-2 border-cyan-400 shadow-2xl">
+                      {/* Chest Panel with AI Core */}
+                      <div className="absolute top-1 left-1/2 -translate-x-1/2 w-5 h-3 bg-gradient-to-br from-cyan-600 to-blue-700 rounded border border-cyan-300 relative overflow-hidden">
+                        <div className="w-full h-full bg-cyan-400 rounded animate-pulse opacity-80"></div>
+                        {/* AI Core Glow */}
+                        <div className="absolute inset-0 bg-cyan-300 rounded animate-ping opacity-30"></div>
                       </div>
 
-                      {/* Arms */}
-                      <div className="absolute -left-1 top-1 w-1 h-3 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>
-                      <div className="absolute -right-1 top-1 w-1 h-3 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>
+                      {/* Shoulder Joints */}
+                      <div className="absolute -top-1 left-1 w-1 h-1 bg-cyan-400 rounded-full"></div>
+                      <div className="absolute -top-1 right-1 w-1 h-1 bg-cyan-400 rounded-full"></div>
                     </div>
 
-                    {/* Energy Effects */}
-                    <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-xl blur-sm animate-pulse"></div>
-                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
-                    <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                    {/* Robot Head */}
+                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-slate-600 to-slate-800 rounded-lg border-2 border-cyan-400 shadow-xl relative">
+                      {/* Face Screen */}
+                      <div className="absolute top-1 left-1/2 -translate-x-1/2 w-3 h-2 bg-black rounded-sm border border-cyan-300 relative overflow-hidden">
+                        {/* Digital Eyes */}
+                        <div className="absolute top-0.5 left-0.5 w-0.5 h-0.5 bg-cyan-400 rounded-full animate-pulse"></div>
+                        <div className="absolute top-0.5 right-0.5 w-0.5 h-0.5 bg-cyan-400 rounded-full animate-pulse"></div>
+                        {/* Scanning Line */}
+                        <div className="absolute top-0 left-0 w-full h-0.5 bg-cyan-300 animate-pulse opacity-60" style={{ animation: 'scanLine 2s linear infinite' }}></div>
+                      </div>
+
+                      {/* Antenna */}
+                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-gradient-to-t from-cyan-400 to-cyan-200 rounded-full">
+                        <div className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-300 rounded-full animate-ping"></div>
+                      </div>
+                    </div>
+
+                    {/* Arms - Interactive */}
+                    <div className="absolute bottom-6 -left-2 w-1.5 h-4 bg-gradient-to-b from-slate-600 to-slate-800 rounded-full border border-cyan-400 transform origin-top transition-all duration-500 group-hover/robot:rotate-12">
+                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full"></div>
+                      {/* Hand Tool */}
+                      <div className="absolute -bottom-1.5 -left-0.5 w-2 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full border border-cyan-300"></div>
+                    </div>
+                    <div className="absolute bottom-6 -right-2 w-1.5 h-4 bg-gradient-to-b from-slate-600 to-slate-800 rounded-full border border-cyan-400 transform origin-top transition-all duration-500 group-hover/robot:-rotate-12">
+                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full"></div>
+                      {/* Hand Tool */}
+                      <div className="absolute -bottom-1.5 -right-0.5 w-2 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full border border-cyan-300"></div>
+                    </div>
+
+                    {/* Legs - Walking Animation */}
+                    <div className="absolute bottom-0 -left-1 w-1.5 h-3 bg-gradient-to-b from-slate-700 to-slate-900 rounded-full border border-cyan-400 transform origin-top transition-all duration-300 group-hover/robot:rotate-6">
+                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full"></div>
+                    </div>
+                    <div className="absolute bottom-0 -right-1 w-1.5 h-3 bg-gradient-to-b from-slate-700 to-slate-900 rounded-full border border-cyan-400 transform origin-top transition-all duration-300 group-hover/robot:-rotate-6">
+                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full"></div>
+                    </div>
+
+                    {/* Energy Field */}
+                    <div className="absolute -inset-3 bg-gradient-radial from-cyan-400/30 via-transparent to-transparent rounded-full blur-md animate-pulse opacity-60"></div>
+
+                    {/* Interaction Particles */}
+                    <div className="absolute -top-2 -left-2 w-1 h-1 bg-cyan-400 rounded-full animate-ping opacity-80"></div>
+                    <div className="absolute -bottom-2 -right-2 w-0.5 h-0.5 bg-blue-400 rounded-full animate-ping opacity-80" style={{ animationDelay: '1s' }}></div>
+                    <div className="absolute top-1 -right-3 w-0.5 h-0.5 bg-cyan-300 rounded-full animate-ping opacity-60" style={{ animationDelay: '0.5s' }}></div>
+
+                    {/* Text Awareness Indicator */}
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full animate-pulse opacity-70"></div>
+                  </div>
+
+                  {/* Robot Interaction Tooltip */}
+                  <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-slate-900/90 text-cyan-300 text-xs px-3 py-2 rounded-lg border border-cyan-400/50 opacity-0 group-hover/robot:opacity-100 transition-all duration-300 whitespace-nowrap shadow-2xl backdrop-blur-sm">
+                    🤖 AI Assistant Ready!
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-slate-900/90 border-l border-t border-cyan-400/50 rotate-45"></div>
                   </div>
                 </div>
 
