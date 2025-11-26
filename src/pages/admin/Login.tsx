@@ -128,7 +128,7 @@ export const AdminLogin = () => {
                       name="email"
                       type="email"
                       required
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 focus:bg-white"
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400"
                       placeholder="admin@knowsstudios.com"
                     />
                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
@@ -149,7 +149,7 @@ export const AdminLogin = () => {
                       name="password"
                       type="password"
                       required
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 focus:bg-white"
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-slate-50 focus:bg-white text-slate-900 placeholder:text-slate-400"
                       placeholder="Enter your password"
                     />
                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
