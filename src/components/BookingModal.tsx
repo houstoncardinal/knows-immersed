@@ -150,7 +150,7 @@ export const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
   if (showConfirmation && confirmedBooking) {
     return (
       <Dialog open={open} onOpenChange={handleCloseConfirmation}>
-        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-studio-darker border-border/50 p-0">
+        <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-6xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto bg-studio-darker border-border/50 mx-4 sm:mx-auto p-0">
           <BookingConfirmation bookingDetails={confirmedBooking} onClose={handleCloseConfirmation} />
         </DialogContent>
       </Dialog>
@@ -159,12 +159,12 @@ export const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-studio-darker border-border/50">
+      <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-4xl lg:max-w-6xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto bg-studio-darker border-border/50 mx-4 sm:mx-auto">
         <DialogHeader>
-          <DialogTitle className="text-3xl font-bold">
+          <DialogTitle className="text-2xl sm:text-3xl font-bold">
             <span className="text-gradient-neon">Book Your Session</span>
           </DialogTitle>
-          <DialogDescription className="text-muted-foreground text-lg">
+          <DialogDescription className="text-muted-foreground text-base sm:text-lg">
             Reserve KNOWS STUDIOS for your next creative project
           </DialogDescription>
         </DialogHeader>
