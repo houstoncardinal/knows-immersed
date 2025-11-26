@@ -17,8 +17,28 @@ import { AdminEquipment } from "./pages/admin/Equipment";
 import { EnhancedAnalytics } from "./pages/admin/EnhancedAnalytics";
 import { AdminSettings } from "./pages/admin/Settings";
 import { NotificationProvider } from "./components/admin/NotificationProvider";
+import { useAuth } from "@/contexts/AuthContext";
+import { Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
+
+// Admin redirect component
+const AdminRedirect = () => {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-studio-darker flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return <Navigate to={isAuthenticated ? "/admin/dashboard" : "/admin/login"} replace />;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -34,7 +54,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
 
             {/* Admin Routes */}
-            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminRedirect />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route
               path="/admin/dashboard"
