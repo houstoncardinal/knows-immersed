@@ -34,7 +34,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Calendar } from "react-big-calendar";
 import { dateFnsLocalizer } from "react-big-calendar";
 import { format, parse, startOfWeek, getDay } from "date-fns";
-import enUS from "date-fns/locale/en-US";
+import { enUS } from "date-fns/locale/en-US";
 import { toast } from "sonner";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 

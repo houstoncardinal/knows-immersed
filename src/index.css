@@ -7,44 +7,38 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
+  /* ============================================
+     THEME: CYBERPUNK (Default)
+     ============================================ */
+  :root,
+  .theme-cyberpunk {
     --background: 0 0% 5%;
     --foreground: 0 0% 98%;
-
     --card: 0 0% 8%;
     --card-foreground: 0 0% 98%;
-
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
-
     --primary: 180 100% 50%;
     --primary-foreground: 0 0% 5%;
-
     --secondary: 340 100% 60%;
     --secondary-foreground: 0 0% 98%;
-
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%;
-
     --accent: 180 100% 50%;
     --accent-foreground: 0 0% 5%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 0 0% 20%;
     --input: 0 0% 15%;
     --ring: 180 100% 50%;
-
     --radius: 0.5rem;
 
+    /* Theme-specific colors */
     --neon-cyan: 180 100% 50%;
     --neon-pink: 340 100% 60%;
     --studio-dark: 0 0% 5%;
     --studio-darker: 0 0% 3%;
     --studio-light: 0 0% 98%;
-
-    /* Luxury Premium Colors */
     --luxury-gold: 45 100% 65%;
     --luxury-platinum: 0 0% 85%;
     --luxury-bronze: 30 80% 50%;
@@ -53,53 +47,273 @@ All colors MUST be HSL.
     --luxury-obsidian: 0 0% 8%;
     --luxury-pearl: 0 0% 95%;
 
-    /* Premium Gradients */
-    --gradient-luxury: linear-gradient(135deg, hsl(var(--luxury-gold)) 0%, hsl(var(--luxury-rose-gold)) 100%);
-    --gradient-premium: linear-gradient(135deg, hsl(var(--neon-cyan)) 0%, hsl(var(--luxury-platinum)) 50%, hsl(var(--neon-pink)) 100%);
-    --gradient-exclusive: linear-gradient(135deg, hsl(var(--luxury-bronze)) 0%, hsl(var(--luxury-gold)) 100%);
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* ============================================
+     THEME: PROFESSIONAL
+     Sleek, modern, corporate feel
+     ============================================ */
+  .theme-professional {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 239 84% 67%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 25%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+
+    --neon-cyan: 217 91% 60%;
+    --neon-pink: 239 84% 67%;
+    --studio-dark: 222 47% 11%;
+    --studio-darker: 222 47% 8%;
+    --studio-light: 210 40% 98%;
+    --luxury-gold: 217 91% 60%;
+    --luxury-platinum: 215 20% 65%;
+    --luxury-bronze: 239 84% 67%;
+    --luxury-rose-gold: 217 91% 70%;
+    --luxury-champagne: 210 40% 90%;
+    --luxury-obsidian: 222 47% 8%;
+    --luxury-pearl: 210 40% 98%;
+
+    --sidebar-background: 222 47% 14%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 217 33% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 25%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  /* ============================================
+     THEME: FUTURISTIC
+     High-tech with electric purples & cyans
+     ============================================ */
+  .theme-futuristic {
+    --background: 270 50% 5%;
+    --foreground: 0 0% 98%;
+    --card: 270 50% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 270 50% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 263 70% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 187 100% 42%;
+    --secondary-foreground: 0 0% 5%;
+    --muted: 270 30% 15%;
+    --muted-foreground: 270 10% 60%;
+    --accent: 263 70% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 270 30% 20%;
+    --input: 270 30% 15%;
+    --ring: 263 70% 50%;
+
+    --neon-cyan: 187 100% 42%;
+    --neon-pink: 263 70% 50%;
+    --studio-dark: 270 50% 5%;
+    --studio-darker: 270 50% 3%;
+    --studio-light: 0 0% 98%;
+    --luxury-gold: 263 70% 60%;
+    --luxury-platinum: 270 10% 70%;
+    --luxury-bronze: 187 100% 42%;
+    --luxury-rose-gold: 263 70% 70%;
+    --luxury-champagne: 270 20% 85%;
+    --luxury-obsidian: 270 50% 5%;
+    --luxury-pearl: 0 0% 95%;
+
+    --sidebar-background: 270 50% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 263 70% 50%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 270 30% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 270 30% 20%;
+    --sidebar-ring: 263 70% 50%;
+  }
+
+  /* ============================================
+     THEME: MINIMAL
+     Clean, elegant, understated
+     ============================================ */
+  .theme-minimal {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 45%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 9%;
+
+    --neon-cyan: 0 0% 20%;
+    --neon-pink: 0 0% 45%;
+    --studio-dark: 0 0% 100%;
+    --studio-darker: 0 0% 98%;
+    --studio-light: 0 0% 9%;
+    --luxury-gold: 0 0% 20%;
+    --luxury-platinum: 0 0% 60%;
+    --luxury-bronze: 0 0% 45%;
+    --luxury-rose-gold: 0 0% 50%;
+    --luxury-champagne: 0 0% 95%;
+    --luxury-obsidian: 0 0% 98%;
+    --luxury-pearl: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 0 0% 9%;
     --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 0 0% 9%;
+  }
 
-    --sidebar-accent: 240 4.8% 95.9%;
+  /* ============================================
+     THEME: LUXE GOLD
+     Premium gold & champagne tones
+     ============================================ */
+  .theme-luxe-gold {
+    --background: 30 20% 5%;
+    --foreground: 45 30% 95%;
+    --card: 30 20% 8%;
+    --card-foreground: 45 30% 95%;
+    --popover: 30 20% 8%;
+    --popover-foreground: 45 30% 95%;
+    --primary: 45 100% 51%;
+    --primary-foreground: 30 20% 5%;
+    --secondary: 38 80% 60%;
+    --secondary-foreground: 30 20% 5%;
+    --muted: 30 15% 15%;
+    --muted-foreground: 45 15% 55%;
+    --accent: 45 100% 51%;
+    --accent-foreground: 30 20% 5%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 45 30% 95%;
+    --border: 45 30% 25%;
+    --input: 30 15% 15%;
+    --ring: 45 100% 51%;
 
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --neon-cyan: 45 100% 51%;
+    --neon-pink: 38 80% 60%;
+    --studio-dark: 30 20% 5%;
+    --studio-darker: 30 20% 3%;
+    --studio-light: 45 30% 95%;
+    --luxury-gold: 45 100% 51%;
+    --luxury-platinum: 45 15% 75%;
+    --luxury-bronze: 30 80% 45%;
+    --luxury-rose-gold: 15 75% 70%;
+    --luxury-champagne: 45 50% 85%;
+    --luxury-obsidian: 30 20% 5%;
+    --luxury-pearl: 45 30% 95%;
 
-    --sidebar-border: 220 13% 91%;
+    --sidebar-background: 30 20% 8%;
+    --sidebar-foreground: 45 30% 95%;
+    --sidebar-primary: 45 100% 51%;
+    --sidebar-primary-foreground: 30 20% 5%;
+    --sidebar-accent: 30 15% 15%;
+    --sidebar-accent-foreground: 45 30% 95%;
+    --sidebar-border: 45 30% 25%;
+    --sidebar-ring: 45 100% 51%;
+  }
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  /* ============================================
+     THEME: OCEAN BREEZE
+     Calm teals & soft gradients
+     ============================================ */
+  .theme-ocean-breeze {
+    --background: 200 50% 5%;
+    --foreground: 180 20% 98%;
+    --card: 200 50% 8%;
+    --card-foreground: 180 20% 98%;
+    --popover: 200 50% 8%;
+    --popover-foreground: 180 20% 98%;
+    --primary: 168 80% 36%;
+    --primary-foreground: 180 20% 98%;
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 200 50% 5%;
+    --muted: 200 30% 15%;
+    --muted-foreground: 180 15% 55%;
+    --accent: 168 80% 36%;
+    --accent-foreground: 180 20% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 180 20% 98%;
+    --border: 200 30% 20%;
+    --input: 200 30% 15%;
+    --ring: 168 80% 36%;
+
+    --neon-cyan: 168 80% 36%;
+    --neon-pink: 199 89% 48%;
+    --studio-dark: 200 50% 5%;
+    --studio-darker: 200 50% 3%;
+    --studio-light: 180 20% 98%;
+    --luxury-gold: 168 80% 45%;
+    --luxury-platinum: 180 15% 70%;
+    --luxury-bronze: 199 89% 48%;
+    --luxury-rose-gold: 168 80% 55%;
+    --luxury-champagne: 180 20% 90%;
+    --luxury-obsidian: 200 50% 5%;
+    --luxury-pearl: 180 20% 98%;
+
+    --sidebar-background: 200 50% 8%;
+    --sidebar-foreground: 180 20% 98%;
+    --sidebar-primary: 168 80% 36%;
+    --sidebar-primary-foreground: 180 20% 98%;
+    --sidebar-accent: 200 30% 15%;
+    --sidebar-accent-foreground: 180 20% 98%;
+    --sidebar-border: 200 30% 20%;
+    --sidebar-ring: 168 80% 36%;
   }
 
   .dark {
     --background: 0 0% 5%;
     --foreground: 0 0% 98%;
-
     --card: 0 0% 8%;
     --card-foreground: 0 0% 98%;
-
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
-
     --primary: 180 100% 50%;
     --primary-foreground: 0 0% 5%;
-
     --secondary: 340 100% 60%;
     --secondary-foreground: 0 0% 98%;
-
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%;
-
     --accent: 180 100% 50%;
     --accent-foreground: 0 0% 5%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 0 0% 20%;
     --input: 0 0% 15%;
     --ring: 180 100% 50%;
