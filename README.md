@@ -1,73 +1,93 @@
-# Welcome to your Lovable project
+# KNOWS STUDIOS - Development Guide
 
-## Project info
+## 🚀 Quick Start
 
-**URL**: https://lovable.dev/projects/937b3220-314b-4ee4-8463-5294f15049ad
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/937b3220-314b-4ee4-8463-5294f15049ad) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### For Instant Hot Reloading (Recommended)
+```bash
+./dev.sh
+# or
 npm run dev
 ```
+**Changes apply instantly** - no need to restart the server!
 
-**Edit a file directly in GitHub**
+### Development Options
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+#### 🔥 Hot Module Replacement (Fastest)
+```bash
+./dev.sh          # Instant updates, no restarts needed
+```
 
-**Use GitHub Codespaces**
+#### 🔍 With Type Checking
+```bash
+./dev.sh type     # HMR + real-time TypeScript checking
+npm run dev:auto  # Same as above
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+#### 🔄 Auto-Restart Mode (Fallback)
+```bash
+./dev.sh auto     # Restarts server on file changes
+npm run dev:restart
+```
 
-## What technologies are used for this project?
+#### 🧹 Clean Development
+```bash
+./dev.sh clean    # Clean install and start fresh
+```
 
-This project is built with:
+## 🛠️ Troubleshooting
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### If Changes Don't Apply Instantly:
+1. **Check browser console** for HMR errors
+2. **Hard refresh** (Ctrl+F5 or Cmd+Shift+R)
+3. **Clear Vite cache**: `rm -rf node_modules/.vite`
+4. **Restart dev server**: `npm run dev`
 
-## How can I deploy this project?
+### Common Issues:
+- **Port 8080 in use**: Script automatically kills conflicting processes
+- **HMR not working**: Check that you're using `npm run dev` (not restart mode)
+- **Build errors**: Fix TypeScript/ESLint errors first
 
-Simply open [Lovable](https://lovable.dev/projects/937b3220-314b-4ee4-8463-5294f15049ad) and click on Share -> Publish.
+## 📁 Project Structure
 
-## Can I connect a custom domain to my Lovable project?
+```
+src/
+├── components/          # Reusable UI components
+│   ├── admin/          # Admin-specific components
+│   └── ui/             # Base UI components
+├── pages/              # Page components
+│   └── admin/          # Admin pages
+├── contexts/           # React contexts
+├── hooks/              # Custom hooks
+└── lib/                # Utilities
+```
 
-Yes, you can!
+## 🎨 Development Features
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Hot Module Replacement**: Instant updates without page refresh
+- **TypeScript**: Full type checking and IntelliSense
+- **ESLint**: Code quality and consistency
+- **Tailwind CSS**: Utility-first styling
+- **Professional Theme System**: Multiple themes with smooth transitions
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 🔧 Available Scripts
+
+```bash
+npm run dev              # Development server with HMR
+npm run dev:auto         # Dev server + type checking
+npm run dev:restart      # Auto-restart on changes
+npm run build            # Production build
+npm run preview          # Preview production build
+npm run check            # Full validation (types + lint + build)
+```
+
+## 💡 Pro Tips
+
+1. **Use `./dev.sh`** for the best development experience
+2. **Check browser dev tools** for HMR status
+3. **Use VS Code** with TypeScript and Tailwind extensions
+4. **Run `npm run check`** before committing
+5. **Keep dependencies updated** with `npm update`
+
+---
+
+**Happy coding! 🎉**

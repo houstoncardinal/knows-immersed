@@ -30,7 +30,7 @@ export const LuxuryHero = () => {
       />
 
       {/* Enhanced Professional Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-slate-100/90 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-slate-100/60 z-10" />
 
       {/* Professional Content Container */}
       <div className="relative z-20 container mx-auto px-6 text-center pt-32 md:pt-40">
@@ -94,30 +94,45 @@ export const LuxuryHero = () => {
             </Button>
           </div>
 
-          {/* Professional Trust Indicators */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-200 shadow-xl">
-              <div className="w-20 h-20 bg-slate-100 border border-slate-200 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <Sparkles className="w-10 h-10 text-slate-600" />
+          {/* Professional Trust & Reviews */}
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-center">
+              {/* Rating Display */}
+              <div className="flex flex-col items-center">
+                <div className="flex items-center gap-1 mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Sparkles key={i} className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+                  ))}
+                </div>
+                <div className="text-2xl font-bold text-slate-900 mb-1">5.0</div>
+                <div className="text-sm text-slate-600">Average Rating</div>
               </div>
-              <h3 className="font-bold text-slate-900 mb-3 text-xl">5-Star Rated</h3>
-              <p className="text-slate-600 font-medium">Trusted by industry professionals worldwide</p>
+
+              {/* Review Count */}
+              <div className="flex flex-col items-center">
+                <div className="text-2xl font-bold text-slate-900 mb-1">150+</div>
+                <div className="text-sm text-slate-600">Verified Reviews</div>
+              </div>
+
+              {/* Professional Accreditation */}
+              <div className="flex flex-col items-center">
+                <Crown className="w-6 h-6 text-slate-700 mb-2" />
+                <div className="text-sm font-semibold text-slate-900">Industry Certified</div>
+                <div className="text-xs text-slate-600">Professional Standards</div>
+              </div>
             </div>
 
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-200 shadow-xl">
-              <div className="w-20 h-20 bg-slate-100 border border-slate-200 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <Crown className="w-10 h-10 text-slate-600" />
-              </div>
-              <h3 className="font-bold text-slate-900 mb-3 text-xl">Premium Service</h3>
-              <p className="text-slate-600 font-medium">Dedicated support and VIP treatment</p>
-            </div>
-
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-slate-200 shadow-xl">
-              <div className="w-20 h-20 bg-slate-100 border border-slate-200 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <Sparkles className="w-10 h-10 text-slate-600" />
-              </div>
-              <h3 className="font-bold text-slate-900 mb-3 text-xl">Professional Equipment</h3>
-              <p className="text-slate-600 font-medium">Industry-leading gear and technology</p>
+            {/* Review Links */}
+            <div className="flex flex-wrap justify-center gap-6 mt-8">
+              <button className="text-slate-700 hover:text-slate-900 font-medium text-sm underline underline-offset-4 hover:underline-offset-2 transition-all duration-200">
+                View Google Reviews →
+              </button>
+              <button className="text-slate-700 hover:text-slate-900 font-medium text-sm underline underline-offset-4 hover:underline-offset-2 transition-all duration-200">
+                Read Testimonials →
+              </button>
+              <button className="text-slate-700 hover:text-slate-900 font-medium text-sm underline underline-offset-4 hover:underline-offset-2 transition-all duration-200">
+                Client Gallery →
+              </button>
             </div>
           </div>
         </div>

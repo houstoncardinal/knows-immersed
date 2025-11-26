@@ -24,18 +24,28 @@ export const ThemeSwitcher = () => {
   const { theme, setTheme, themes } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleThemeChange = (newTheme: ThemeName) => {
+    console.log('Switching theme from', theme, 'to', newTheme);
+    setTheme(newTheme);
+    // Check if class was applied
+    setTimeout(() => {
+      console.log('Current theme classes:', document.documentElement.className);
+      console.log('Current theme CSS variables:', getComputedStyle(document.documentElement).getPropertyValue('--primary'));
+    }, 100);
+  };
+
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
           size="sm"
-          className="gap-2 text-foreground/80 hover:text-foreground hover:bg-foreground/10 transition-all duration-300"
+          className="gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-white hover:border-slate-300 shadow-sm transition-all duration-300"
         >
           <div className="relative">
             <Palette className="w-4 h-4" />
             <div
-              className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full border border-background"
+              className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full border border-white"
               style={{ backgroundColor: themeColors[theme].primary }}
             />
           </div>
@@ -54,7 +64,7 @@ export const ThemeSwitcher = () => {
         {themes.map((t) => (
           <DropdownMenuItem
             key={t.name}
-            onClick={() => setTheme(t.name)}
+            onClick={() => handleThemeChange(t.name)}
             className="flex items-center gap-3 py-3 cursor-pointer focus:bg-foreground/10 transition-all duration-200"
           >
             <div className="flex gap-1">

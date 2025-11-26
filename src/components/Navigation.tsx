@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,9 +56,10 @@ export const Navigation = () => {
           >
             Contact
           </button>
+          <ThemeSwitcher />
           <Button
             onClick={() => window.open("https://www.peerspace.com/pages/listings/5d36714b581d66000fc2f9a2?utm_source=copy_link&utm_campaign=listing_sharing", "_blank")}
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold px-6 animate-pulse-glow"
+            className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-3 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-slate-800"
           >
             RESERVE BOOKING
           </Button>
@@ -65,7 +67,7 @@ export const Navigation = () => {
 
         <Button
           onClick={() => window.open("https://www.peerspace.com/pages/listings/5d36714b581d66000fc2f9a2?utm_source=copy_link&utm_campaign=listing_sharing", "_blank")}
-          className="md:hidden bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold"
+          className="md:hidden bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-slate-800"
         >
           BOOK NOW
         </Button>

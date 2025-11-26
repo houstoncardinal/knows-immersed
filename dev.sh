@@ -15,21 +15,27 @@ check_port() {
     fi
 }
 
-# Function to start development server
+# Function to start development server with HMR
 start_dev() {
-    echo "🔧 Starting development server..."
+    echo "🔥 Starting development server with Hot Module Replacement (HMR)..."
+    echo "💡 Changes will be applied instantly without restarting!"
+    echo "🌐 Open: http://localhost:8080"
+    echo ""
     npm run dev
 }
 
-# Function to start with auto-restart
+# Function to start with auto-restart (fallback)
 start_auto() {
-    echo "🔄 Starting development server with auto-restart..."
+    echo "🔄 Starting development server with auto-restart (fallback mode)..."
+    echo "⚠️  Note: This will restart the entire server on changes"
+    echo "💡 For instant updates, use: ./dev.sh (no arguments)"
     npm run dev:restart
 }
 
-# Function to start with type checking
+# Function to start with type checking and HMR
 start_with_checks() {
-    echo "🔍 Starting development server with type checking..."
+    echo "🔍 Starting development server with type checking and HMR..."
+    echo "💡 Changes apply instantly + real-time type checking"
     npm run dev:auto
 }
 

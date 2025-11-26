@@ -13,8 +13,14 @@ export default defineConfig(({ mode }) => ({
       overlay: true, // Show error overlay in browser
     },
     watch: {
-      usePolling: false, // Use native file watching
-      interval: 300  // Check for changes every 300msinterval: 300, // Check for changes every 300ms
+      usePolling: false, // Use native file watching for better performance
+      interval: 100, // Faster change detection
+      include: ['src/**', 'public/**', 'index.html'],
+      exclude: ['node_modules/**', 'dist/**', '.git/**'],
+    },
+    fs: {
+      // Allow serving files from packages for better HMR
+      allow: ['.'],
     },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
