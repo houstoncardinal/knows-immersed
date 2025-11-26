@@ -346,6 +346,26 @@ export const PowerfulBooking = () => {
             Interactive booking system with real-time availability. Secure your spot with a deposit and get instant confirmation.
           </p>
 
+          {/* PeerSpace Booking Option */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground mb-2">Alternative booking option:</p>
+              <a
+                href="https://www.peerspace.com/pages/listings/5d36714b581d66000fc2f9a2?utm_source=copy_link&utm_campaign=listing_sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg group"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                Book with PeerSpace
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <p className="text-xs text-muted-foreground mt-2">External booking platform • Instant confirmation</p>
+            </div>
+          </div>
+
           {/* Auto-save indicator */}
           {autoSaved && (
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full text-sm text-green-600 animate-fade-in">
