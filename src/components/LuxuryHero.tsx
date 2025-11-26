@@ -271,10 +271,7 @@ export const LuxuryHero = memo(() => {
                   </div>
                 </div>
 
-                {/* Hover Tooltip */}
-                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-black/80 text-cyan-300 text-xs px-3 py-1 rounded-full border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  Click to meet our AI Assistant! 🤖
-                </div>
+
               </span>
             </h1>
 
