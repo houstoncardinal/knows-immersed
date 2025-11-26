@@ -262,29 +262,30 @@ export const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
                 <h3 className="text-2xl font-bold mb-2">Pick Your Date & Time</h3>
                 <p className="text-muted-foreground">When would you like to book the studio?</p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
                 <div>
-                  <Label className="text-lg mb-4 flex items-center gap-2">
-                    <CalendarIcon className="w-5 h-5 text-primary" /> Select Date
+                  <Label className="text-base sm:text-lg mb-4 flex items-center gap-2">
+                    <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" /> Select Date
                   </Label>
                   <Calendar
                     mode="single"
                     selected={selectedDate}
                     onSelect={setSelectedDate}
-                    className="rounded-md border border-border bg-card/50 p-4"
+                    className="rounded-md border border-border bg-card/50 p-3 sm:p-4 w-full"
                     disabled={(date) => date < new Date()}
                   />
                 </div>
                 <div>
-                  <Label className="text-lg mb-4 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-primary" /> Select Time Slot
+                  <Label className="text-base sm:text-lg mb-4 flex items-center gap-2">
+                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary" /> Select Time Slot
                   </Label>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-3 sm:grid-cols-2 gap-2 sm:gap-3">
                     {timeSlots.map((slot) => (
                       <Button
                         key={slot}
                         variant={selectedTimeSlot === slot ? "default" : "outline"}
-                        className={`${
+                        size="sm"
+                        className={`text-xs sm:text-sm px-2 sm:px-4 py-2 sm:py-3 ${
                           selectedTimeSlot === slot
                             ? "bg-gradient-to-r from-neon-cyan to-neon-pink"
                             : "hover:border-primary"
