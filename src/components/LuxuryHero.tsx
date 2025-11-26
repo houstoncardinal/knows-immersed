@@ -263,17 +263,7 @@ export const LuxuryHero = memo(() => {
                     <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-2 h-0.5 bg-cyan-400/50 rounded-full blur-sm animate-pulse"></div>
                   </div>
 
-                  {/* Enhanced Interactive Tooltip */}
-                  <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 bg-black/90 text-white text-lg px-6 py-4 rounded-xl border-2 border-cyan-400 shadow-2xl backdrop-blur-md opacity-0 group-hover/robot:opacity-100 transition-all duration-500 whitespace-nowrap transform translate-y-2 group-hover/robot:translate-y-0">
-                    <div className="flex items-center gap-3">
-                      <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-                      <span className="font-bold text-xl tracking-wide">HI! HOW CAN I HELP YOU?</span>
-                    </div>
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-black/90 border-l-2 border-t-2 border-cyan-400 rotate-45"></div>
 
-                    {/* Enhanced Glow Effect for Better Visibility */}
-                    <div className="absolute inset-0 bg-cyan-400/20 rounded-xl blur-md -z-10"></div>
-                  </div>
 
                   {/* Character Status Indicator */}
                   <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full border-2 border-white shadow-lg animate-pulse">
