@@ -279,13 +279,12 @@ export const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
                   <Label className="text-base sm:text-lg mb-4 flex items-center gap-2">
                     <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary" /> Select Time Slot
                   </Label>
-                  <div className="grid grid-cols-3 sm:grid-cols-2 gap-2 sm:gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     {timeSlots.map((slot) => (
                       <Button
                         key={slot}
                         variant={selectedTimeSlot === slot ? "default" : "outline"}
-                        size="sm"
-                        className={`text-xs sm:text-sm px-2 sm:px-4 py-2 sm:py-3 ${
+                        className={`w-full text-sm px-4 py-3 ${
                           selectedTimeSlot === slot
                             ? "bg-gradient-to-r from-neon-cyan to-neon-pink"
                             : "hover:border-primary"

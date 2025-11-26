@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import { LuxuryGallery } from "./components/LuxuryGallery";
 import { AdminLogin } from "./pages/admin/Login";
 import { AdminDashboard } from "./pages/admin/Dashboard";
 import { EnhancedBookings } from "./pages/admin/EnhancedBookings";
@@ -56,6 +57,7 @@ const App = () => (
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Index />} />
+            <Route path="/gallery" element={<LuxuryGallery />} />
 
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminRedirect />} />
