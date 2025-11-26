@@ -304,6 +304,54 @@ All colors MUST be HSL.
     --sidebar-ring: 168 80% 36%;
   }
 
+  /* ============================================
+     THEME: BOOM HEADSHOT
+     Counter-Strike 1.6 tactical theme
+     ============================================ */
+  .theme-boom-headshot {
+    --background: 25 15% 8%;
+    --foreground: 45 20% 95%;
+    --card: 25 15% 12%;
+    --card-foreground: 45 20% 95%;
+    --popover: 25 15% 12%;
+    --popover-foreground: 45 20% 95%;
+    --primary: 25 100% 50%;
+    --primary-foreground: 25 15% 8%;
+    --secondary: 120 60% 40%;
+    --secondary-foreground: 25 15% 8%;
+    --muted: 25 10% 18%;
+    --muted-foreground: 45 10% 60%;
+    --accent: 25 100% 50%;
+    --accent-foreground: 25 15% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 45 20% 95%;
+    --border: 25 15% 22%;
+    --input: 25 10% 18%;
+    --ring: 25 100% 50%;
+
+    --neon-cyan: 25 100% 50%;
+    --neon-pink: 120 60% 40%;
+    --studio-dark: 25 15% 8%;
+    --studio-darker: 25 15% 5%;
+    --studio-light: 45 20% 95%;
+    --luxury-gold: 25 100% 50%;
+    --luxury-platinum: 45 10% 70%;
+    --luxury-bronze: 25 80% 35%;
+    --luxury-rose-gold: 15 75% 65%;
+    --luxury-champagne: 45 30% 85%;
+    --luxury-obsidian: 25 15% 8%;
+    --luxury-pearl: 45 20% 95%;
+
+    --sidebar-background: 25 15% 12%;
+    --sidebar-foreground: 45 20% 95%;
+    --sidebar-primary: 25 100% 50%;
+    --sidebar-primary-foreground: 25 15% 8%;
+    --sidebar-accent: 25 10% 18%;
+    --sidebar-accent-foreground: 45 20% 95%;
+    --sidebar-border: 25 15% 22%;
+    --sidebar-ring: 25 100% 50%;
+  }
+
   .dark {
     --background: 0 0% 5%;
     --foreground: 0 0% 98%;

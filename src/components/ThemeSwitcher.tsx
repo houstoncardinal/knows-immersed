@@ -18,6 +18,7 @@ const themeColors: Record<ThemeName, { primary: string; secondary: string }> = {
   minimal: { primary: '#5b8def', secondary: '#8b5cf6' },
   'luxe-gold': { primary: '#f5c342', secondary: '#e8a030' },
   'ocean-breeze': { primary: '#14b8a6', secondary: '#38bdf8' },
+  'boom-headshot': { primary: '#ff4500', secondary: '#32cd32' },
 };
 
 export const ThemeSwitcher = () => {

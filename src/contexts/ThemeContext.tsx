@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type ThemeName = 'cyberpunk' | 'professional' | 'futuristic' | 'minimal' | 'luxe-gold' | 'ocean-breeze';
+export type ThemeName = 'cyberpunk' | 'professional' | 'futuristic' | 'minimal' | 'luxe-gold' | 'ocean-breeze' | 'boom-headshot';
 
 interface ThemeContextType {
   theme: ThemeName;
@@ -15,6 +15,7 @@ const themes: { name: ThemeName; label: string; description: string }[] = [
   { name: 'minimal', label: 'Midnight', description: 'Sophisticated dark blue' },
   { name: 'luxe-gold', label: 'Luxe', description: 'Premium gold & warm tones' },
   { name: 'ocean-breeze', label: 'Aqua', description: 'Calm teal & ocean hues' },
+  { name: 'boom-headshot', label: 'Boom Headshot', description: 'Counter-Strike 1.6 tactical' },
 ];
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -40,7 +41,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       'theme-futuristic',
       'theme-minimal',
       'theme-luxe-gold',
-      'theme-ocean-breeze'
+      'theme-ocean-breeze',
+      'theme-boom-headshot'
     );
     // Add current theme class
     document.documentElement.classList.add(`theme-${theme}`);

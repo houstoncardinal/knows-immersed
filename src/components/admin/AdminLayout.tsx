@@ -4,6 +4,7 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CommandPalette } from "./CommandPalette";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { AIAssistant } from "./AIAssistant";
 import { useAdminShortcuts } from "@/hooks/useKeyboardShortcuts";
 import {
   LayoutDashboard,
@@ -269,6 +270,22 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
           {children}
         </main>
       </div>
+
+      {/* AI Assistant */}
+      <AIAssistantWrapper currentPage={location.pathname} />
     </div>
+  );
+};
+
+// AI Assistant Wrapper Component
+const AIAssistantWrapper = ({ currentPage }: { currentPage: string }) => {
+  const [isAIOpen, setIsAIOpen] = useState(false);
+
+  return (
+    <AIAssistant
+      isOpen={isAIOpen}
+      onToggle={() => setIsAIOpen(!isAIOpen)}
+      currentPage={currentPage}
+    />
   );
 };

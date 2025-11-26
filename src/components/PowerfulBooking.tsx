@@ -199,12 +199,11 @@ export const PowerfulBooking = () => {
         const age = Date.now() - data.timestamp;
         // Only restore if less than 24 hours old
         if (age < 24 * 60 * 60 * 1000) {
-          setSelectedDate(data.selectedDate ? new Date(data.selectedDate) : undefined);
-          setSelectedTimeSlot(data.selectedTimeSlot || "");
-          setSelectedPackage(data.selectedPackage || "full-day");
-          setSelectedAddOns(data.selectedAddOns || []);
-          setBookingData(data.bookingData || bookingData);
-          toast.info("Restored your previous booking progress");
+        setSelectedDate(data.selectedDate ? new Date(data.selectedDate) : undefined);
+        setSelectedTimeSlot(data.selectedTimeSlot || "");
+        setSelectedPackage(data.selectedPackage || "full-day");
+        setSelectedAddOns(data.selectedAddOns || []);
+        setBookingData(data.bookingData || bookingData);
         }
       } catch (e) {
         // Ignore invalid saved data
