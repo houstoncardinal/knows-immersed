@@ -6,10 +6,13 @@ import {
   Users,
   DollarSign,
   TrendingUp,
+  TrendingDown,
   Clock,
   CheckCircle,
   AlertCircle,
   Package,
+  BarChart3,
+  Activity,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -21,7 +24,9 @@ const stats = [
     change: "+12%",
     trend: "up",
     icon: Calendar,
-    color: "from-neon-cyan to-blue-500",
+    color: "bg-blue-500",
+    bgColor: "bg-blue-50",
+    textColor: "text-blue-700",
   },
   {
     title: "Active Clients",
@@ -29,7 +34,9 @@ const stats = [
     change: "+8%",
     trend: "up",
     icon: Users,
-    color: "from-neon-pink to-purple-500",
+    color: "bg-emerald-500",
+    bgColor: "bg-emerald-50",
+    textColor: "text-emerald-700",
   },
   {
     title: "Monthly Revenue",
@@ -37,7 +44,9 @@ const stats = [
     change: "+23%",
     trend: "up",
     icon: DollarSign,
-    color: "from-green-400 to-emerald-500",
+    color: "bg-green-500",
+    bgColor: "bg-green-50",
+    textColor: "text-green-700",
   },
   {
     title: "Equipment Usage",
@@ -45,7 +54,9 @@ const stats = [
     change: "-5%",
     trend: "down",
     icon: Package,
-    color: "from-orange-400 to-red-500",
+    color: "bg-amber-500",
+    bgColor: "bg-amber-50",
+    textColor: "text-amber-700",
   },
 ];
 
@@ -98,31 +109,46 @@ const upcomingTasks = [
 export const AdminDashboard = () => {
   return (
     <AdminLayout>
-      <div className="space-y-6">
+      <div className="space-y-8">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900">Dashboard Overview</h1>
+            <p className="text-slate-600 mt-1">Welcome back! Here's what's happening with your studio.</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="text-right">
+              <p className="text-sm text-slate-500">Last updated</p>
+              <p className="text-sm font-medium text-slate-900">{new Date().toLocaleDateString()}</p>
+            </div>
+          </div>
+        </div>
+
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
+            const TrendIcon = stat.trend === "up" ? TrendingUp : TrendingDown;
             return (
               <Card
                 key={index}
-                className="p-6 bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all immersive-card"
+                className="p-6 bg-white border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all duration-200"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">{stat.title}</p>
-                    <h3 className="text-3xl font-bold">{stat.value}</h3>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-slate-600 mb-1">{stat.title}</p>
+                    <h3 className="text-3xl font-bold text-slate-900">{stat.value}</h3>
                   </div>
-                  <div className={`p-3 rounded-lg bg-gradient-to-br ${stat.color}`}>
-                    <Icon className="w-6 h-6 text-white" />
+                  <div className={`p-3 rounded-xl ${stat.bgColor}`}>
+                    <Icon className={`w-6 h-6 ${stat.textColor}`} />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <TrendingUp className={`w-4 h-4 ${stat.trend === "up" ? "text-green-500" : "text-red-500 rotate-180"}`} />
-                  <span className={`text-sm font-medium ${stat.trend === "up" ? "text-green-500" : "text-red-500"}`}>
+                  <TrendIcon className={`w-4 h-4 ${stat.trend === "up" ? "text-emerald-600" : "text-red-600"}`} />
+                  <span className={`text-sm font-semibold ${stat.trend === "up" ? "text-emerald-600" : "text-red-600"}`}>
                     {stat.change}
                   </span>
-                  <span className="text-sm text-muted-foreground">vs last month</span>
+                  <span className="text-sm text-slate-500">vs last month</span>
                 </div>
               </Card>
             );
@@ -131,20 +157,22 @@ export const AdminDashboard = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Recent Bookings */}
-          <Card className="p-6 bg-card/50 backdrop-blur-sm border-border">
+          <Card className="p-6 bg-white border border-slate-200">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold">Recent Bookings</h2>
-              <Button variant="outline" size="sm">View All</Button>
+              <h2 className="text-xl font-bold text-slate-900">Recent Bookings</h2>
+              <Button variant="outline" size="sm" className="border-slate-300 text-slate-700 hover:bg-slate-50">
+                View All
+              </Button>
             </div>
             <div className="space-y-4">
               {recentBookings.map((booking) => (
                 <div
                   key={booking.id}
-                  className="flex items-center justify-between p-4 rounded-lg bg-muted/20 hover:bg-muted/40 transition-all group"
+                  className="flex items-center justify-between p-4 rounded-lg bg-slate-50 hover:bg-slate-100 transition-all duration-200 border border-slate-100"
                 >
                   <div className="flex-1">
-                    <p className="font-medium mb-1">{booking.client}</p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <p className="font-semibold text-slate-900 mb-1">{booking.client}</p>
+                    <div className="flex items-center gap-4 text-sm text-slate-600">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         {booking.date}
@@ -153,16 +181,16 @@ export const AdminDashboard = () => {
                         <Clock className="w-3 h-3" />
                         {booking.time}
                       </span>
-                      <span>{booking.package}</span>
+                      <span className="px-2 py-1 bg-slate-200 rounded text-xs font-medium">{booking.package}</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="font-bold text-lg">{booking.amount}</span>
+                    <span className="font-bold text-lg text-slate-900">{booking.amount}</span>
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${
                         booking.status === "confirmed"
-                          ? "bg-green-500/10 text-green-500 border border-green-500/20"
-                          : "bg-yellow-500/10 text-yellow-500 border border-yellow-500/20"
+                          ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
+                          : "bg-amber-100 text-amber-800 border border-amber-200"
                       }`}
                     >
                       {booking.status}
@@ -178,33 +206,33 @@ export const AdminDashboard = () => {
         </div>
 
         {/* Upcoming Tasks */}
-        <Card className="p-6 bg-card/50 backdrop-blur-sm border-border">
-          <h2 className="text-xl font-bold mb-6">Upcoming Tasks</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+        <Card className="p-6 bg-white border border-slate-200">
+          <h2 className="text-xl font-bold text-slate-900 mb-6">Upcoming Tasks</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {upcomingTasks.map((task) => (
               <div
                 key={task.id}
-                className="p-4 rounded-lg bg-muted/20 hover:bg-muted/40 transition-all group cursor-pointer"
+                className="p-4 rounded-lg bg-slate-50 hover:bg-slate-100 transition-all duration-200 border border-slate-100 cursor-pointer group"
               >
                 <div className="flex items-start gap-3">
-                  <div className={`mt-1 p-1 rounded ${
+                  <div className={`mt-1 p-1.5 rounded-full ${
                     task.priority === "high"
-                      ? "bg-red-500/20"
+                      ? "bg-red-100"
                       : task.priority === "medium"
-                      ? "bg-yellow-500/20"
-                      : "bg-blue-500/20"
+                      ? "bg-amber-100"
+                      : "bg-blue-100"
                   }`}>
                     <div className={`w-2 h-2 rounded-full ${
                       task.priority === "high"
                         ? "bg-red-500"
                         : task.priority === "medium"
-                        ? "bg-yellow-500"
+                        ? "bg-amber-500"
                         : "bg-blue-500"
                     }`} />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium mb-1">{task.task}</p>
-                    <p className="text-xs text-muted-foreground">Due: {task.due}</p>
+                    <p className="text-sm font-semibold text-slate-900 mb-1 group-hover:text-slate-700">{task.task}</p>
+                    <p className="text-xs text-slate-500">Due: {task.due}</p>
                   </div>
                 </div>
               </div>
@@ -213,24 +241,24 @@ export const AdminDashboard = () => {
         </Card>
 
         {/* Quick Actions */}
-        <Card className="p-6 bg-card/50 backdrop-blur-sm border-border">
-          <h2 className="text-xl font-bold mb-6">Quick Actions</h2>
+        <Card className="p-6 bg-white border border-slate-200">
+          <h2 className="text-xl font-bold text-slate-900 mb-6">Quick Actions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Button className="h-20 bg-gradient-to-br from-neon-cyan to-blue-500 hover:opacity-90">
-              <Calendar className="w-5 h-5 mr-2" />
-              New Booking
+            <Button className="h-20 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 flex flex-col items-center justify-center gap-2">
+              <Calendar className="w-5 h-5" />
+              <span>New Booking</span>
             </Button>
-            <Button className="h-20 bg-gradient-to-br from-neon-pink to-purple-500 hover:opacity-90">
-              <Users className="w-5 h-5 mr-2" />
-              Add Client
+            <Button className="h-20 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors duration-200 flex flex-col items-center justify-center gap-2">
+              <Users className="w-5 h-5" />
+              <span>Add Client</span>
             </Button>
-            <Button className="h-20 bg-gradient-to-br from-green-400 to-emerald-500 hover:opacity-90">
-              <CheckCircle className="w-5 h-5 mr-2" />
-              Mark Complete
+            <Button className="h-20 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors duration-200 flex flex-col items-center justify-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              <span>Mark Complete</span>
             </Button>
-            <Button className="h-20 bg-gradient-to-br from-orange-400 to-red-500 hover:opacity-90">
-              <AlertCircle className="w-5 h-5 mr-2" />
-              View Alerts
+            <Button className="h-20 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-colors duration-200 flex flex-col items-center justify-center gap-2">
+              <AlertCircle className="w-5 h-5" />
+              <span>View Alerts</span>
             </Button>
           </div>
         </Card>

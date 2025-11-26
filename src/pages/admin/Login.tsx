@@ -98,13 +98,7 @@ export const AdminLogin = () => {
               </div>
             </div>
 
-            {/* Professional quote */}
-            <div className="mt-8 p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-              <blockquote className="text-slate-300 italic">
-                "Excellence in every frame, precision in every booking."
-              </blockquote>
-              <cite className="text-sm text-slate-400 mt-2 block">— KNOWS STUDIOS Team</cite>
-            </div>
+
           </div>
         </div>
 
