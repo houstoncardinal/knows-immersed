@@ -513,9 +513,9 @@ When responding, be helpful, concise, and proactive. If you suggest actions, pro
           </div>
 
           {/* Messages Container - Fixed Scrolling */}
-          <div className="flex-1 flex flex-col overflow-hidden">
-            <ScrollArea className="flex-1 h-full">
-              <div className="px-4 py-2 space-y-4 min-h-full">
+          <div className="flex-1 flex flex-col overflow-hidden min-h-0">
+            <ScrollArea className="flex-1 w-full">
+              <div className="px-4 py-2 space-y-4 w-full max-h-[400px] overflow-y-auto">
                 {messages.map((message, index) => (
                   <div
                     key={message.id}
