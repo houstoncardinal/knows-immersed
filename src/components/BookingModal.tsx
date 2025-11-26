@@ -332,16 +332,21 @@ export const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
                     onClick={() => handleAddOnToggle(addon.id)}
                   >
                     <div className="flex items-start gap-4">
-                      <Checkbox
-                        checked={selectedAddOns.includes(addon.id)}
-                        onCheckedChange={() => handleAddOnToggle(addon.id)}
-                        className="mt-1"
-                      />
-                      <div className="flex-1">
+                      <div className="flex-shrink-0">
+                        <Checkbox
+                          checked={selectedAddOns.includes(addon.id)}
+                          onCheckedChange={(checked) => {
+                            handleAddOnToggle(addon.id);
+                          }}
+                          onClick={(e) => e.stopPropagation()}
+                          className="mt-1 w-6 h-6"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
                         <h4 className="font-bold mb-1">{addon.name}</h4>
                         <p className="text-2xl font-bold text-gradient-neon">+${addon.price}</p>
                       </div>
-                      <div className="text-primary">
+                      <div className="flex-shrink-0 text-primary">
                         {addon.id === "lighting" && <Camera className="w-8 h-8" />}
                         {addon.id === "backdrop" && <Video className="w-8 h-8" />}
                         {addon.id === "assistant" && <Mic className="w-8 h-8" />}
