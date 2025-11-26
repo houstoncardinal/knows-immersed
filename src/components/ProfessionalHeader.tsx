@@ -76,7 +76,7 @@ export const ProfessionalHeader = () => {
           fixed left-0 right-0 z-50 transition-all duration-500
           ${isScrolled
             ? "top-0 glass-luxury shadow-luxury-lg py-4"
-            : "top-12 md:top-12 bg-gradient-to-b from-studio-darker/80 to-transparent py-6"
+            : "top-0 md:top-12 bg-gradient-to-b from-studio-darker/80 to-transparent py-6"
           }
         `}
       >
