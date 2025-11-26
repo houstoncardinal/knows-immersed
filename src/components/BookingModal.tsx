@@ -171,11 +171,11 @@ export const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
 
         <div className="mt-6">
           {/* Progress Steps */}
-          <div className="flex items-center justify-center mb-8 gap-4">
+          <div className="flex items-center justify-center mb-8 gap-2 sm:gap-4 px-2">
             {[1, 2, 3, 4].map((s) => (
               <div key={s} className="flex items-center">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all ${
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-sm sm:text-base transition-all ${
                     step >= s
                       ? "bg-gradient-to-r from-neon-cyan to-neon-pink text-white scale-110"
                       : "bg-muted text-muted-foreground"
@@ -185,7 +185,7 @@ export const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
                 </div>
                 {s < 4 && (
                   <div
-                    className={`w-12 h-1 mx-2 transition-all ${
+                    className={`w-6 h-1 sm:w-12 sm:h-1 mx-1 sm:mx-2 transition-all ${
                       step > s ? "bg-gradient-to-r from-neon-cyan to-neon-pink" : "bg-muted"
                     }`}
                   />
