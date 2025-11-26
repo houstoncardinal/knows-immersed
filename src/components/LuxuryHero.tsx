@@ -30,7 +30,7 @@ export const LuxuryHero = () => {
       />
 
       {/* Professional Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/70 to-slate-50/95 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-slate-50/85 z-10" />
 
       {/* Subtle Professional Elements */}
       <div className="absolute inset-0 z-10 opacity-30">

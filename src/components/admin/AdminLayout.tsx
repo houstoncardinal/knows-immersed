@@ -3,8 +3,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CommandPalette } from "./CommandPalette";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { useAdminShortcuts } from "@/hooks/useKeyboardShortcuts";
-import { useAdminTheme } from "@/hooks/useAdminTheme";
 import {
   LayoutDashboard,
   Calendar,
@@ -16,8 +16,6 @@ import {
   LogOut,
   Menu,
   X,
-  Moon,
-  Sun,
   ChevronDown,
 } from "lucide-react";
 
@@ -41,9 +39,6 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
-
-  // Initialize admin theme (manages theme state globally)
-  const { theme, toggleTheme } = useAdminTheme();
 
   // Enable keyboard shortcuts
   useAdminShortcuts();
@@ -215,20 +210,8 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
             </div>
 
             <div className="hidden lg:flex items-center gap-4">
-              {/* Theme Toggle */}
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="rounded-lg"
-                title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-5 h-5 text-foreground" />
-                ) : (
-                  <Moon className="w-5 h-5 text-foreground" />
-                )}
-              </Button>
+              {/* Theme Selector */}
+              <ThemeSwitcher />
 
               <CommandPalette />
 
