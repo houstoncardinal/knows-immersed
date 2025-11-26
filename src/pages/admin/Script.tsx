@@ -765,5 +765,6 @@ export const Script = () => {
         </div>
       )}
     </div>
-  );
+  </AdminLayout>
+);
 };

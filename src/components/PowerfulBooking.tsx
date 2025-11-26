@@ -455,22 +455,24 @@ export const PowerfulBooking = () => {
 
         {/* Calendar Step */}
         {bookingStep === 'calendar' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 animate-fade-in">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 animate-fade-in">
             {/* Calendar Section */}
             <div className="space-y-6">
               <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CalendarIcon className="w-6 h-6 text-[hsl(var(--luxury-gold))]" />
+                <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-2">
+                  <CalendarIcon className="w-5 h-5 md:w-6 md:h-6 text-[hsl(var(--luxury-gold))]" />
                   Select Your Date
                 </h3>
-                <Calendar
-                  mode="single"
-                  selected={selectedDate}
-                  onSelect={setSelectedDate}
-                  className="rounded-lg border border-border bg-card/50 p-6 shadow-luxury-md"
-                  disabled={(date) => !isDateAvailable(date)}
-                />
-                <div className="mt-4 flex items-center gap-4 text-sm">
+                <div className="overflow-x-auto">
+                  <Calendar
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={setSelectedDate}
+                    className="rounded-lg border border-border bg-card/50 p-3 md:p-6 shadow-luxury-md min-w-[280px]"
+                    disabled={(date) => !isDateAvailable(date)}
+                  />
+                </div>
+                <div className="mt-4 flex flex-wrap items-center gap-3 md:gap-4 text-sm">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-green-500" />
                     <span>Available</span>
@@ -487,17 +489,18 @@ export const PowerfulBooking = () => {
             <div className="space-y-6">
               {/* Time Slots */}
               <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <Clock className="w-6 h-6 text-[hsl(var(--luxury-gold))]" />
+                <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Clock className="w-5 h-5 md:w-6 md:h-6 text-[hsl(var(--luxury-gold))]" />
                   Available Time Slots
                 </h3>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3">
                   {timeSlots.map((slot) => (
                     <Button
                       key={slot.time}
                       variant={selectedTimeSlot === slot.time ? "default" : "outline"}
                       disabled={!slot.available}
-                      className={`${
+                      size="sm"
+                      className={`text-xs md:text-sm px-2 py-2 md:px-3 md:py-2 h-auto ${
                         selectedTimeSlot === slot.time
                           ? "bg-gradient-to-r from-neon-cyan to-neon-pink border-none"
                           : slot.available
@@ -514,8 +517,8 @@ export const PowerfulBooking = () => {
 
               {/* Package Selection */}
               <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <Package className="w-6 h-6 text-[hsl(var(--luxury-gold))]" />
+                <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Package className="w-5 h-5 md:w-6 md:h-6 text-[hsl(var(--luxury-gold))]" />
                   Choose Your Package
                 </h3>
                 <RadioGroup value={selectedPackage} onValueChange={setSelectedPackage}>
@@ -525,7 +528,7 @@ export const PowerfulBooking = () => {
                       return (
                         <Card
                           key={pkg.id}
-                          className={`relative p-4 cursor-pointer transition-all hover:scale-105 ${
+                          className={`relative p-3 md:p-4 cursor-pointer transition-all hover:scale-105 ${
                             selectedPackage === pkg.id
                               ? "border-2 border-neon-cyan bg-neon-cyan/5 shadow-luxury-md"
                               : "border-border hover:border-[hsl(var(--luxury-gold))]/50"
@@ -533,24 +536,24 @@ export const PowerfulBooking = () => {
                           onClick={() => setSelectedPackage(pkg.id)}
                         >
                           {pkg.popular && (
-                            <Badge className="absolute -top-2 -right-2 bg-gradient-to-r from-neon-cyan to-neon-pink">
+                            <Badge className="absolute -top-2 -right-2 bg-gradient-to-r from-neon-cyan to-neon-pink text-xs px-2 py-1">
                               <Star className="w-3 h-3 mr-1" /> Popular
                             </Badge>
                           )}
                           {pkg.luxury && (
-                            <Badge className="absolute -top-2 -right-2 bg-gradient-to-r from-[hsl(var(--luxury-gold))] to-[hsl(var(--luxury-rose-gold))] text-black">
+                            <Badge className="absolute -top-2 -right-2 bg-gradient-to-r from-[hsl(var(--luxury-gold))] to-[hsl(var(--luxury-rose-gold))] text-black text-xs px-2 py-1">
                               <Crown className="w-3 h-3 mr-1" /> VIP
                             </Badge>
                           )}
-                          <div className="flex items-start gap-4">
+                          <div className="flex items-start gap-3 md:gap-4">
                             <RadioGroupItem value={pkg.id} className="mt-1" />
-                            <Icon className="w-8 h-8 text-primary mt-1" />
-                            <div className="flex-1">
-                              <h4 className="font-bold text-lg">{pkg.name}</h4>
-                              <p className="text-sm text-muted-foreground mb-2">{pkg.description}</p>
-                              <div className="flex items-center gap-4">
-                                <span className="text-2xl font-bold text-gradient-neon">${pkg.basePrice}</span>
-                                <span className="text-sm text-muted-foreground">{pkg.duration}</span>
+                            <Icon className="w-6 h-6 md:w-8 md:h-8 text-primary mt-1 flex-shrink-0" />
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-bold text-base md:text-lg truncate">{pkg.name}</h4>
+                              <p className="text-xs md:text-sm text-muted-foreground mb-2 line-clamp-2">{pkg.description}</p>
+                              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                                <span className="text-xl md:text-2xl font-bold text-gradient-neon">${pkg.basePrice}</span>
+                                <span className="text-xs md:text-sm text-muted-foreground">{pkg.duration}</span>
                               </div>
                             </div>
                           </div>
@@ -565,10 +568,10 @@ export const PowerfulBooking = () => {
               <Button
                 onClick={handleContinueToDetails}
                 size="lg"
-                className="w-full bg-gradient-to-r from-[hsl(var(--luxury-gold))] to-[hsl(var(--luxury-rose-gold))] hover:opacity-90 text-black font-bold text-lg py-6"
+                className="w-full bg-gradient-to-r from-[hsl(var(--luxury-gold))] to-[hsl(var(--luxury-rose-gold))] hover:opacity-90 text-black font-bold text-base md:text-lg py-4 md:py-6"
                 disabled={!selectedDate || !selectedTimeSlot}
               >
-                Continue to Details <ArrowRight className="ml-2 w-5 h-5" />
+                Continue to Details <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
               </Button>
             </div>
           </div>
@@ -576,11 +579,11 @@ export const PowerfulBooking = () => {
 
         {/* Details Step */}
         {bookingStep === 'details' && (
-          <div className="max-w-4xl mx-auto animate-fade-in">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="max-w-4xl mx-auto animate-fade-in px-4 md:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
               {/* Form Section */}
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold mb-6">Project Information</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-6">Project Information</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -822,12 +825,12 @@ export const PowerfulBooking = () => {
 
         {/* Payment Step */}
         {bookingStep === 'payment' && (
-          <div className="max-w-2xl mx-auto animate-fade-in">
-            <Card className="p-8 bg-gradient-to-br from-card to-card/50 border-[hsl(var(--luxury-gold))]/20">
+          <div className="max-w-2xl mx-auto animate-fade-in px-4 md:px-6">
+            <Card className="p-6 md:p-8 bg-gradient-to-br from-card to-card/50 border-[hsl(var(--luxury-gold))]/20">
               <div className="text-center mb-8">
-                <CreditCard className="w-16 h-16 mx-auto mb-4 text-[hsl(var(--luxury-gold))]" />
-                <h3 className="text-2xl font-bold mb-2">Secure Your Booking</h3>
-                <p className="text-muted-foreground">
+                <CreditCard className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-[hsl(var(--luxury-gold))]" />
+                <h3 className="text-xl md:text-2xl font-bold mb-2">Secure Your Booking</h3>
+                <p className="text-sm md:text-base text-muted-foreground">
                   Pay a ${deposit} deposit to reserve your spot. Full payment due on arrival.
                 </p>
               </div>

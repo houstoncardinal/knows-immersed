@@ -784,5 +784,6 @@ export const Timeline = () => {
         </div>
       )}
     </div>
-  );
+  </AdminLayout>
+);
 };
