@@ -1298,6 +1298,38 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes robotGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(0,255,255,0.8)) drop-shadow(0 0 40px rgba(0,255,255,0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(0,255,255,1)) drop-shadow(0 0 60px rgba(0,255,255,0.6)) drop-shadow(0 0 80px rgba(0,255,255,0.3));
+  }
+}
+
+@keyframes characterPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1.1) contrast(1.1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2) contrast(1.15);
+  }
+}
+
+@keyframes characterFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-3px) rotate(0.5deg);
+  }
+  66% {
+    transform: translateY(-6px) rotate(-0.5deg);
+  }
+}
+
 @keyframes scanLine {
   0% {
     transform: translateX(-100%);
