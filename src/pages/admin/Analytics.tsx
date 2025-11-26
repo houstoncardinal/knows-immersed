@@ -92,14 +92,14 @@ export const AdminAnalytics = () => {
     <AdminLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex flex-col gap-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Analytics Dashboard</h1>
-            <p className="text-muted-foreground">Comprehensive insights into your studio performance</p>
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">Analytics Dashboard</h1>
+            <p className="text-muted-foreground text-sm sm:text-base">Comprehensive insights into your studio performance</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <Select value={timeRange} onValueChange={setTimeRange}>
-              <SelectTrigger className="w-40">
+              <SelectTrigger className="w-full sm:w-40">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -109,14 +109,17 @@ export const AdminAnalytics = () => {
                 <SelectItem value="12months">Last 12 months</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline">
-              <Download className="w-4 h-4 mr-2" />
-              Export Report
-            </Button>
-            <Button variant="outline">
-              <RefreshCw className="w-4 h-4 mr-2" />
-              Refresh
-            </Button>
+            <div className="flex gap-2">
+              <Button variant="outline" className="flex-1 sm:flex-none">
+                <Download className="w-4 h-4 mr-2" />
+                <span className="hidden sm:inline">Export Report</span>
+                <span className="sm:hidden">Export</span>
+              </Button>
+              <Button variant="outline" className="flex-1 sm:flex-none">
+                <RefreshCw className="w-4 h-4 mr-2" />
+                <span className="hidden sm:inline">Refresh</span>
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -155,11 +158,11 @@ export const AdminAnalytics = () => {
 
         {/* Charts Section */}
         <Tabs defaultValue="revenue" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="revenue">Revenue Trends</TabsTrigger>
-            <TabsTrigger value="packages">Package Performance</TabsTrigger>
-            <TabsTrigger value="equipment">Equipment Usage</TabsTrigger>
-            <TabsTrigger value="clients">Top Clients</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto">
+            <TabsTrigger value="revenue" className="text-xs sm:text-sm">Revenue Trends</TabsTrigger>
+            <TabsTrigger value="packages" className="text-xs sm:text-sm">Package Performance</TabsTrigger>
+            <TabsTrigger value="equipment" className="text-xs sm:text-sm">Equipment Usage</TabsTrigger>
+            <TabsTrigger value="clients" className="text-xs sm:text-sm">Top Clients</TabsTrigger>
           </TabsList>
 
           <TabsContent value="revenue" className="space-y-6">

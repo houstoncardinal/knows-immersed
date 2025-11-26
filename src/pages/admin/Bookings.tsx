@@ -154,17 +154,17 @@ export const AdminBookings = () => {
     <AdminLayout>
       <div className="space-y-6">
         {/* Header with Actions */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex flex-col gap-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Booking Management</h1>
-            <p className="text-muted-foreground">Manage and track all studio bookings</p>
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">Booking Management</h1>
+            <p className="text-muted-foreground text-sm sm:text-base">Manage and track all studio bookings</p>
           </div>
-          <div className="flex items-center gap-3">
-            <Button variant="outline">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <Button variant="outline" className="flex-1 sm:flex-none">
               <Download className="w-4 h-4 mr-2" />
               Export
             </Button>
-            <Button className="bg-gradient-to-r from-neon-cyan to-neon-pink hover:opacity-90">
+            <Button className="bg-gradient-to-r from-neon-cyan to-neon-pink hover:opacity-90 flex-1 sm:flex-none">
               <Plus className="w-4 h-4 mr-2" />
               New Booking
             </Button>
