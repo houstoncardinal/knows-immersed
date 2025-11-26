@@ -29,6 +29,8 @@ import {
   Star,
   TrendingUp,
   Calendar,
+  Users,
+  DollarSign,
 } from "lucide-react";
 
 // Mock client data
@@ -120,153 +122,199 @@ export const AdminClients = () => {
       label: "Total Clients",
       value: mockClients.length,
       change: "+5 this month",
-      color: "from-neon-cyan to-blue-500",
+      icon: Users,
+      color: "bg-blue-50 text-blue-700",
     },
     {
       label: "Active Clients",
       value: mockClients.filter(c => c.status === "active").length,
       change: "89% retention",
-      color: "from-green-500 to-emerald-500",
+      icon: TrendingUp,
+      color: "bg-emerald-50 text-emerald-700",
     },
     {
       label: "Avg. Booking Value",
       value: "$450",
       change: "+12% vs last month",
-      color: "from-neon-pink to-purple-500",
+      icon: DollarSign,
+      color: "bg-green-50 text-green-700",
     },
     {
       label: "Top Client Spend",
       value: `$${Math.max(...mockClients.map(c => c.totalSpent))}`,
       change: "Emily Rodriguez",
-      color: "from-orange-500 to-red-500",
+      icon: Star,
+      color: "bg-amber-50 text-amber-700",
     },
   ];
 
   return (
     <AdminLayout>
-      <div className="space-y-6">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">Client Management</h1>
-            <p className="text-muted-foreground">Manage and track all your clients</p>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+        <div className="space-y-8 p-8">
+          {/* Professional Header */}
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h1 className="text-4xl font-bold text-slate-900 mb-2">Client Management</h1>
+                <p className="text-lg text-slate-600">Advanced client relationship management system</p>
+                <div className="flex items-center gap-4 mt-4">
+                  <div className="flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    {filteredClients.length} Total Clients
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    Last updated: {new Date().toLocaleTimeString()}
+                  </div>
+                </div>
+              </div>
+              <Button className="bg-slate-900 hover:bg-slate-800 text-white">
+                <Plus className="w-4 h-4 mr-2" />
+                Add Client
+              </Button>
+            </div>
           </div>
-          <Button className="bg-gradient-to-r from-neon-cyan to-neon-pink hover:opacity-90">
-            <Plus className="w-4 h-4 mr-2" />
-            Add Client
-          </Button>
-        </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((stat, index) => (
-            <Card key={index} className="p-6 bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all">
-              <p className="text-sm text-muted-foreground mb-2">{stat.label}</p>
-              <h3 className="text-3xl font-bold mb-2">{stat.value}</h3>
-              <p className="text-xs text-muted-foreground">{stat.change}</p>
-            </Card>
-          ))}
-        </div>
+          {/* Advanced KPI Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <Card
+                  key={index}
+                  className="relative overflow-hidden bg-white border border-slate-200 hover:border-slate-300 hover:shadow-xl transition-all duration-300 group"
+                >
+                  {/* Background Pattern */}
+                  <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
+                    <Icon className="w-full h-full" />
+                  </div>
 
-        {/* Search */}
-        <Card className="p-6 bg-card/50 backdrop-blur-sm border-border">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <Input
-              placeholder="Search clients by name, email, or company..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
+                  <div className="p-8 relative">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex-1">
+                        <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">{stat.label}</p>
+                        <h3 className="text-4xl font-bold text-slate-900 mb-1">{stat.value}</h3>
+                        <p className="text-sm text-slate-600">{stat.change}</p>
+                      </div>
+                      <div className={`p-4 rounded-2xl ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-8 h-8" />
+                      </div>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="w-full bg-slate-100 rounded-full h-2 mb-2">
+                      <div
+                        className="h-2 rounded-full transition-all duration-500 bg-slate-500"
+                        style={{ width: "85%" }}
+                      ></div>
+                    </div>
+                    <p className="text-xs text-slate-500">Performance: Excellent</p>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
-        </Card>
 
-        {/* Clients Table */}
-        <Card className="p-6 bg-card/50 backdrop-blur-sm border-border">
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Client</TableHead>
-                  <TableHead>Contact</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead>Bookings</TableHead>
-                  <TableHead>Total Spent</TableHead>
-                  <TableHead>Last Booking</TableHead>
-                  <TableHead>Rating</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredClients.map((client) => (
-                  <TableRow key={client.id} className="hover:bg-muted/50">
-                    <TableCell>
-                      <div>
-                        <p className="font-medium">{client.name}</p>
-                        <p className="text-xs text-muted-foreground">{client.company}</p>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="space-y-1">
-                        <p className="text-xs flex items-center gap-1">
-                          <Mail className="w-3 h-3" />
-                          {client.email}
-                        </p>
-                        <p className="text-xs flex items-center gap-1">
-                          <Phone className="w-3 h-3" />
-                          {client.phone}
-                        </p>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant={client.type === "Corporate" ? "default" : "secondary"}>
-                        {client.type}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-muted-foreground" />
-                        <span className="font-medium">{client.totalBookings}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell className="font-bold">${client.totalSpent}</TableCell>
-                    <TableCell className="text-sm text-muted-foreground">{client.lastBooking}</TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-1">
-                        {[...Array(client.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
-                        ))}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge
-                        variant={client.status === "active" ? "default" : "secondary"}
-                        className={client.status === "active" ? "bg-green-500/10 text-green-500" : "bg-gray-500/10 text-gray-500"}
-                      >
-                        {client.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex items-center justify-end gap-2">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => setSelectedClient(client)}
-                        >
-                          <Eye className="w-4 h-4" />
-                        </Button>
-                        <Button variant="ghost" size="icon">
-                          <Edit className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </TableCell>
+          {/* Search */}
+          <Card className="p-6 bg-white border border-slate-200 shadow-sm">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Input
+                placeholder="Search clients by name, email, or company..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 border-slate-300 focus:border-slate-400"
+              />
+            </div>
+          </Card>
+
+          {/* Clients Table */}
+          <Card className="p-6 bg-white border border-slate-200 shadow-sm">
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Client</TableHead>
+                    <TableHead>Contact</TableHead>
+                    <TableHead>Type</TableHead>
+                    <TableHead>Bookings</TableHead>
+                    <TableHead>Total Spent</TableHead>
+                    <TableHead>Last Booking</TableHead>
+                    <TableHead>Rating</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </Card>
+                </TableHeader>
+                <TableBody>
+                  {filteredClients.map((client) => (
+                    <TableRow key={client.id} className="hover:bg-slate-50">
+                      <TableCell>
+                        <div>
+                          <p className="font-medium">{client.name}</p>
+                          <p className="text-xs text-slate-500">{client.company}</p>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="space-y-1">
+                          <p className="text-xs flex items-center gap-1">
+                            <Mail className="w-3 h-3" />
+                            {client.email}
+                          </p>
+                          <p className="text-xs flex items-center gap-1">
+                            <Phone className="w-3 h-3" />
+                            {client.phone}
+                          </p>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant={client.type === "Corporate" ? "default" : "secondary"}>
+                          {client.type}
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4 text-slate-400" />
+                          <span className="font-medium">{client.totalBookings}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="font-bold">${client.totalSpent}</TableCell>
+                      <TableCell className="text-sm text-slate-500">{client.lastBooking}</TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-1">
+                          {[...Array(client.rating)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                          ))}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge
+                          variant={client.status === "active" ? "default" : "secondary"}
+                          className={client.status === "active" ? "bg-emerald-100 text-emerald-800 border border-emerald-200" : "bg-slate-100 text-slate-800 border border-slate-200"}
+                        >
+                          {client.status}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <div className="flex items-center justify-end gap-2">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => setSelectedClient(client)}
+                          >
+                            <Eye className="w-4 h-4" />
+                          </Button>
+                          <Button variant="ghost" size="icon">
+                            <Edit className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </Card>
+        </div>
 
         {/* Client Details Modal */}
         <Dialog open={!!selectedClient} onOpenChange={() => setSelectedClient(null)}>

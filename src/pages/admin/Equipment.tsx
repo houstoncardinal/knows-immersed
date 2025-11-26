@@ -63,118 +63,180 @@ export const AdminEquipment = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "available":
-        return "bg-green-500/10 text-green-500";
+        return "bg-emerald-100 text-emerald-800 border border-emerald-200";
       case "in-use":
-        return "bg-blue-500/10 text-blue-500";
+        return "bg-blue-100 text-blue-800 border border-blue-200";
       case "maintenance":
-        return "bg-yellow-500/10 text-yellow-500";
+        return "bg-amber-100 text-amber-800 border border-amber-200";
       default:
-        return "bg-gray-500/10 text-gray-500";
+        return "bg-slate-100 text-slate-800 border border-slate-200";
     }
   };
 
+  const stats = [
+    {
+      label: "Total Items",
+      value: mockEquipment.length,
+      icon: Package,
+      color: "bg-slate-50 text-slate-700",
+    },
+    {
+      label: "Available",
+      value: mockEquipment.filter(e => e.status === "available").length,
+      icon: CheckCircle,
+      color: "bg-emerald-50 text-emerald-700",
+    },
+    {
+      label: "In Use",
+      value: mockEquipment.filter(e => e.status === "in-use").length,
+      icon: Settings,
+      color: "bg-blue-50 text-blue-700",
+    },
+    {
+      label: "Maintenance",
+      value: mockEquipment.filter(e => e.status === "maintenance").length,
+      icon: AlertCircle,
+      color: "bg-amber-50 text-amber-700",
+    },
+  ];
+
   return (
     <AdminLayout>
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">Equipment Inventory</h1>
-            <p className="text-muted-foreground">Manage and track all studio equipment</p>
-          </div>
-          <Button className="bg-gradient-to-r from-neon-cyan to-neon-pink">
-            <Plus className="w-4 h-4 mr-2" />
-            Add Equipment
-          </Button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="p-6">
-            <p className="text-sm text-muted-foreground mb-2">Total Items</p>
-            <p className="text-3xl font-bold">{mockEquipment.length}</p>
-          </Card>
-          <Card className="p-6">
-            <p className="text-sm text-muted-foreground mb-2">Available</p>
-            <p className="text-3xl font-bold text-green-500">
-              {mockEquipment.filter(e => e.status === "available").length}
-            </p>
-          </Card>
-          <Card className="p-6">
-            <p className="text-sm text-muted-foreground mb-2">In Use</p>
-            <p className="text-3xl font-bold text-blue-500">
-              {mockEquipment.filter(e => e.status === "in-use").length}
-            </p>
-          </Card>
-          <Card className="p-6">
-            <p className="text-sm text-muted-foreground mb-2">Maintenance</p>
-            <p className="text-3xl font-bold text-yellow-500">
-              {mockEquipment.filter(e => e.status === "maintenance").length}
-            </p>
-          </Card>
-        </div>
-
-        <Card className="p-6">
-          <div className="relative mb-6">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <Input
-              placeholder="Search equipment..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+        <div className="space-y-8 p-8">
+          {/* Professional Header */}
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h1 className="text-4xl font-bold text-slate-900 mb-2">Equipment Inventory</h1>
+                <p className="text-lg text-slate-600">Advanced equipment management and maintenance tracking</p>
+                <div className="flex items-center gap-4 mt-4">
+                  <div className="flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    {filteredEquipment.length} Equipment Items
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    Last updated: {new Date().toLocaleTimeString()}
+                  </div>
+                </div>
+              </div>
+              <Button className="bg-slate-900 hover:bg-slate-800 text-white">
+                <Plus className="w-4 h-4 mr-2" />
+                Add Equipment
+              </Button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* Advanced KPI Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <Card
+                  key={index}
+                  className="relative overflow-hidden bg-white border border-slate-200 hover:border-slate-300 hover:shadow-xl transition-all duration-300 group"
+                >
+                  {/* Background Pattern */}
+                  <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
+                    <Icon className="w-full h-full" />
+                  </div>
+
+                  <div className="p-8 relative">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex-1">
+                        <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">{stat.label}</p>
+                        <h3 className="text-4xl font-bold text-slate-900 mb-1">{stat.value}</h3>
+                      </div>
+                      <div className={`p-4 rounded-2xl ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-8 h-8" />
+                      </div>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="w-full bg-slate-100 rounded-full h-2 mb-2">
+                      <div
+                        className="h-2 rounded-full transition-all duration-500 bg-slate-500"
+                        style={{ width: "85%" }}
+                      ></div>
+                    </div>
+                    <p className="text-xs text-slate-500">Performance: Excellent</p>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+
+          {/* Search */}
+          <Card className="p-6 bg-white border border-slate-200 shadow-sm">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Input
+                placeholder="Search equipment by name or category..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 border-slate-300 focus:border-slate-400"
+              />
+            </div>
+          </Card>
+
+          {/* Equipment Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {filteredEquipment.map((item) => (
-              <Card key={item.id} className="p-6 bg-muted/20 hover:bg-muted/30 transition-all">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-start gap-3">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-neon-cyan to-blue-500">
-                      <Package className="w-6 h-6 text-white" />
+              <Card key={item.id} className="bg-white border border-slate-200 hover:border-slate-300 hover:shadow-xl transition-all duration-300 p-6">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-start gap-4">
+                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                      <Package className="w-8 h-8 text-slate-600" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-1">{item.name}</h3>
-                      <p className="text-sm text-muted-foreground">{item.id} • {item.category}</p>
+                      <h3 className="text-xl font-bold text-slate-900 mb-1">{item.name}</h3>
+                      <p className="text-sm text-slate-500 mb-2">{item.id} • {item.category}</p>
+                      <Badge className={getStatusColor(item.status)}>
+                        {item.status}
+                      </Badge>
                     </div>
                   </div>
-                  <Badge className={getStatusColor(item.status)}>
-                    {item.status}
-                  </Badge>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div>
-                    <p className="text-muted-foreground mb-1">Condition</p>
-                    <div className="flex items-center gap-1">
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-slate-50 rounded-lg p-4">
+                    <p className="text-sm font-medium text-slate-500 mb-1">Condition</p>
+                    <div className="flex items-center gap-2">
                       {item.condition === "excellent" ? (
-                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <CheckCircle className="w-5 h-5 text-emerald-500" />
                       ) : (
-                        <AlertCircle className="w-4 h-4 text-yellow-500" />
+                        <AlertCircle className="w-5 h-5 text-amber-500" />
                       )}
-                      <span className="capitalize">{item.condition}</span>
+                      <span className="font-medium capitalize text-slate-900">{item.condition}</span>
                     </div>
                   </div>
-                  <div>
-                    <p className="text-muted-foreground mb-1">Value</p>
-                    <p className="font-bold">${item.value}</p>
+                  <div className="bg-slate-50 rounded-lg p-4">
+                    <p className="text-sm font-medium text-slate-500 mb-1">Value</p>
+                    <p className="text-xl font-bold text-slate-900">${item.value.toLocaleString()}</p>
                   </div>
-                  <div>
-                    <p className="text-muted-foreground mb-1">Usage</p>
-                    <p className="font-bold">{item.usage}</p>
+                  <div className="bg-slate-50 rounded-lg p-4">
+                    <p className="text-sm font-medium text-slate-500 mb-1">Usage Rate</p>
+                    <p className="text-xl font-bold text-slate-900">{item.usage}</p>
                   </div>
-                  <div>
-                    <p className="text-muted-foreground mb-1">Next Service</p>
-                    <p className="font-bold text-xs">{item.nextMaintenance}</p>
+                  <div className="bg-slate-50 rounded-lg p-4">
+                    <p className="text-sm font-medium text-slate-500 mb-1">Next Service</p>
+                    <p className="text-sm font-bold text-slate-900">{item.nextMaintenance}</p>
                   </div>
                 </div>
 
-                <Button variant="outline" size="sm" className="w-full mt-4">
-                  <Settings className="w-4 h-4 mr-2" />
-                  Manage
-                </Button>
+                <div className="flex gap-3">
+                  <Button variant="outline" className="flex-1 border-slate-300 text-slate-700 hover:bg-slate-50">
+                    <Settings className="w-4 h-4 mr-2" />
+                    Manage
+                  </Button>
+                  <Button className="flex-1 bg-slate-900 hover:bg-slate-800 text-white">
+                    View Details
+                  </Button>
+                </div>
               </Card>
             ))}
           </div>
-        </Card>
+        </div>
       </div>
     </AdminLayout>
   );
