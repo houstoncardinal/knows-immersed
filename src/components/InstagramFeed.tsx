@@ -75,7 +75,64 @@ export const InstagramFeed = () => {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        {/* Mobile: Horizontal scroll, Desktop: Grid */}
+        <div className="block md:hidden">
+          <div className="flex gap-4 overflow-x-auto pb-4 px-2 scrollbar-hide">
+            {posts.slice(0, 4).map((post) => (
+              <Card
+                key={post.id}
+                className="group overflow-hidden bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer flex-shrink-0 w-64"
+              >
+                <div className="relative aspect-square overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt="Instagram post"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex items-center gap-4 text-white">
+                      <div className="flex items-center gap-1">
+                        <Heart className="w-4 h-4 fill-white" />
+                        <span className="font-semibold text-sm">{post.likes}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MessageCircle className="w-4 h-4" />
+                        <span className="font-semibold text-sm">{post.comments}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-2 right-2 w-6 h-6 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Instagram className="w-3 h-3 text-white" />
+                  </div>
+                </div>
+
+                <div className="p-3">
+                  <p className="text-xs text-gray-700 line-clamp-2 mb-2">
+                    {post.caption}
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-gray-500">
+                    <span>{post.timestamp}</span>
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1">
+                        <Heart className="w-3 h-3" />
+                        <span>{post.likes}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MessageCircle className="w-3 h-3" />
+                        <span>{post.comments}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {posts.map((post) => (
             <Card
               key={post.id}
