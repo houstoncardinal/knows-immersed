@@ -57,30 +57,36 @@ export const AIAssistant = ({ isOpen, onToggle, currentPage }: AIAssistantProps)
     {
       id: '1',
       role: 'assistant',
-      content: `Hello! I'm your AI Studio Assistant. I can help you manage bookings, analyze data, create reports, and navigate the dashboard efficiently.
+      content: `🎙️ Hello! I'm your AI Studio Assistant, powered by ElevenLabs voice synthesis. I can help you navigate KNOWS STUDIOS, manage bookings, analyze data, and understand everything about our premier creative studio.
+
+🎭 **KNOWS STUDIOS specializes in:**
+• Professional CYC Wall Studio for Film & Photography
+• North Hollywood's premier creative facility
+• World-class equipment and professional standards
+• Content creators, filmmakers, and commercial brands
 
 Current page: ${currentPage}
 
-What would you like me to help you with today?`,
+What would you like me to help you with today? I can speak my responses using ElevenLabs voice synthesis! 🔊`,
       timestamp: new Date(),
       actions: [
         {
           type: 'analyze',
-          label: 'Analyze Revenue',
-          data: { type: 'revenue', period: 'month' },
-          description: 'Get insights on monthly revenue trends'
+          label: '🎭 About KNOWS STUDIOS',
+          data: { type: 'about', section: 'studio' },
+          description: 'Learn about our studio and services'
         },
         {
           type: 'navigate',
-          label: 'View Bookings',
-          data: { page: '/admin/bookings' },
-          description: 'Navigate to bookings management'
+          label: '📸 View Our Work',
+          data: { page: '/gallery' },
+          description: 'Explore our portfolio and client work'
         },
         {
           type: 'create',
-          label: 'New Booking',
+          label: '📅 Book Session',
           data: { type: 'booking' },
-          description: 'Create a new booking'
+          description: 'Schedule a studio session'
         }
       ]
     }
@@ -88,7 +94,75 @@ What would you like me to help you with today?`,
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // ElevenLabs Voice Synthesis
+  const speakWithElevenLabs = async (text: string) => {
+    try {
+      setIsSpeaking(true);
+      const elevenLabsApiKey = import.meta.env.VITE_ELEVENLABS_API_KEY;
+      const voiceId = import.meta.env.VITE_ELEVENLABS_VOICE_ID || '21m00Tcm4TlvDq8ikWAM'; // Default voice
+
+      if (!elevenLabsApiKey) {
+        console.log('ElevenLabs API key not configured - skipping voice synthesis');
+        return;
+      }
+
+      const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'audio/mpeg',
+          'Content-Type': 'application/json',
+          'xi-api-key': elevenLabsApiKey,
+        },
+        body: JSON.stringify({
+          text: text,
+          model_id: 'eleven_monolingual_v1',
+          voice_settings: {
+            stability: 0.5,
+            similarity_boost: 0.5,
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`ElevenLabs API error: ${response.status}`);
+      }
+
+      const audioBlob = await response.blob();
+      const audioUrl = URL.createObjectURL(audioBlob);
+
+      // Stop any currently playing audio
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+
+      // Create and play new audio
+      const audio = new Audio(audioUrl);
+      audioRef.current = audio;
+
+      audio.onended = () => {
+        setIsSpeaking(false);
+        URL.revokeObjectURL(audioUrl);
+      };
+
+      audio.onerror = () => {
+        setIsSpeaking(false);
+        URL.revokeObjectURL(audioUrl);
+        console.log('Audio playback failed');
+      };
+
+      await audio.play();
+
+    } catch (error) {
+      console.error('ElevenLabs voice synthesis error:', error);
+      setIsSpeaking(false);
+      toast.info('Voice synthesis unavailable - continuing with text response');
+    }
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -207,6 +281,11 @@ What would you like me to help you with today?`,
       actions
     };
     setMessages(prev => [...prev, newMessage]);
+
+    // Speak assistant messages using ElevenLabs
+    if (role === 'assistant') {
+      speakWithElevenLabs(content);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {

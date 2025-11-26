@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Sparkles, Crown } from "lucide-react";
+import { ArrowRight, Play, Sparkles, Crown, Bot, Zap } from "lucide-react";
 import { useParallax } from "@/hooks/useScrollAnimation";
 import { useEffect, useState, useCallback, useRef, memo } from "react";
 import { BookingModal } from "./BookingModal";
 import { useTheme } from "@/contexts/ThemeContext";
+import { AIAssistant } from "./admin/AIAssistant";
 
 export const LuxuryHero = memo(() => {
   const offsetY = useParallax();
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [aiAssistantOpen, setAiAssistantOpen] = useState(false);
   const { theme } = useTheme();
   const audioContextRef = useRef<AudioContext | null>(null);
 
@@ -206,7 +208,7 @@ export const LuxuryHero = memo(() => {
                 KNOWS
               </span>
               <span
-                className="block animate-in slide-in-from-right duration-1000 delay-500 cursor-pointer transition-all duration-300 hover:scale-105 neural-hover"
+                className="block animate-in slide-in-from-right duration-1000 delay-500 cursor-pointer transition-all duration-300 hover:scale-105 neural-hover relative"
                 style={{
                 textShadow: `inset 0 0 12px rgba(0,255,255,0.8), inset 2px 2px 8px rgba(0,206,209,0.7), inset -1px -1px 6px rgba(32,178,170,0.6), inset 1px 1px 4px rgba(64,224,208,0.8), 0 0 8px rgba(0,255,255,1), 0 0 20px rgba(0,206,209,0.9), 0 0 40px rgba(32,178,170,0.8), 0 0 80px rgba(64,224,208,0.7), 0 0 120px rgba(72,209,204,0.6), 0 0 160px rgba(0,191,255,0.5), 0 0 200px rgba(30,144,255,0.4), 0 0 240px rgba(0,139,139,0.3), 0 0 280px rgba(0,128,128,0.2), 3px 3px 32px rgba(0,0,0,0.9)`,
                 filter: `drop-shadow(0 0 60px ${themeColors.shadowColor.replace('0.8', '0.8')}) brightness(2.0) contrast(1.5)`,
@@ -216,9 +218,54 @@ export const LuxuryHero = memo(() => {
                 WebkitTextStroke: '1px rgba(255, 255, 255, 0.3)'
                 }}
                 onMouseEnter={() => playSound('hover')}
-                onClick={() => playSound('click')}
+                onClick={() => {
+                  playSound('click');
+                  setAiAssistantOpen(true);
+                }}
               >
                 STUDIOS
+
+                {/* Cool Robot Graphics Sitting on the Letter */}
+                <div className="absolute -top-8 -right-12 w-16 h-16 animate-bounce" style={{ animationDuration: '2s' }}>
+                  {/* Robot Head */}
+                  <div className="relative w-full h-full">
+                    {/* Robot Face */}
+                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg border-2 border-cyan-300 shadow-2xl mx-auto mb-1 relative overflow-hidden">
+                      {/* Eyes */}
+                      <div className="absolute top-2 left-2 w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+                      <div className="absolute top-2 right-2 w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+
+                      {/* Mouth */}
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-1 bg-cyan-600 rounded-full"></div>
+
+                      {/* Antenna */}
+                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-cyan-300"></div>
+                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full animate-ping"></div>
+                    </div>
+
+                    {/* Robot Body */}
+                    <div className="w-8 h-6 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-md mx-auto border border-cyan-400 shadow-lg relative">
+                      {/* Chest Panel */}
+                      <div className="absolute top-1 left-1/2 -translate-x-1/2 w-3 h-2 bg-cyan-300 rounded-sm border border-cyan-200">
+                        <div className="w-full h-full bg-cyan-400 rounded-sm animate-pulse opacity-75"></div>
+                      </div>
+
+                      {/* Arms */}
+                      <div className="absolute -left-1 top-1 w-1 h-3 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>
+                      <div className="absolute -right-1 top-1 w-1 h-3 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>
+                    </div>
+
+                    {/* Energy Effects */}
+                    <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-xl blur-sm animate-pulse"></div>
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
+                    <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                  </div>
+                </div>
+
+                {/* Hover Tooltip */}
+                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-black/80 text-cyan-300 text-xs px-3 py-1 rounded-full border border-cyan-400/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                  Click to meet our AI Assistant! 🤖
+                </div>
               </span>
             </h1>
 
@@ -364,6 +411,12 @@ export const LuxuryHero = memo(() => {
 
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
 
+      {/* AI Assistant - Powered by ElevenLabs */}
+      <AIAssistant
+        isOpen={aiAssistantOpen}
+        onToggle={() => setAiAssistantOpen(!aiAssistantOpen)}
+        currentPage="home"
+      />
 
     </section>
   );
