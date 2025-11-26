@@ -57,22 +57,26 @@ export const StatsSection = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`text-center transform transition-all duration-700 ${
+              className={`text-center transform transition-all duration-700 group hover:scale-110 cursor-default ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${index * 0.1}s` }}
             >
-              <div className="mb-4">
-                <span className="text-5xl md:text-6xl font-bold text-gradient-neon neon-glow-cyan block">
+              <div className="mb-4 relative">
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/20 to-neon-pink/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="text-5xl md:text-6xl font-bold text-gradient-neon block relative z-10 group-hover:scale-110 transition-transform duration-500">
                   {counts[index]}
                   {stat.suffix}
                 </span>
               </div>
-              <p className="text-muted-foreground uppercase tracking-wider text-sm font-medium">
+              <p className="text-muted-foreground uppercase tracking-wider text-sm font-medium group-hover:text-foreground transition-colors">
                 {stat.label}
               </p>
+              {/* Underline effect */}
+              <div className="mx-auto mt-2 w-0 h-0.5 bg-gradient-to-r from-neon-cyan to-neon-pink group-hover:w-16 transition-all duration-500" />
             </div>
           ))}
         </div>

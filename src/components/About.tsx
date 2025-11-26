@@ -64,34 +64,39 @@ export const About = () => {
             return (
               <Card
                 key={index}
-                className={`bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-700 p-6 group hover:scale-105 ${
+                className={`bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-700 p-6 group immersive-card relative overflow-hidden ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
                 style={{ transitionDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="w-6 h-6 text-primary" />
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 to-neon-pink/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10 flex items-start gap-4">
+                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <Icon className="w-6 h-6 text-primary group-hover:animate-float" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-gradient-neon transition-colors">
                       {feature.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-sm group-hover:text-foreground/80 transition-colors">
                       {feature.description}
                     </p>
                   </div>
                 </div>
+                {/* Corner accent */}
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-primary/20 group-hover:border-primary/50 transition-colors duration-500" />
               </Card>
             );
           })}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="inline-block bg-card/30 backdrop-blur-sm border border-border rounded-lg p-8">
-            <h3 className="text-3xl font-bold mb-4">
-              We offer <span className="text-gradient-neon">1,400 square feet</span>, 
-              <span className="text-gradient-neon"> 16ft x 20ft cyc wall</span>, 
+        <div className={`mt-16 text-center transition-all duration-700 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>
+          <div className="inline-block bg-card/30 backdrop-blur-sm border border-border rounded-lg p-8 hover:border-primary/50 transition-all duration-500 group immersive-card relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-pink/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <h3 className="text-3xl font-bold mb-4 relative z-10">
+              We offer <span className="text-gradient-neon">1,400 square feet</span>,
+              <span className="text-gradient-neon"> 16ft x 20ft cyc wall</span>,
               and equipment to bring your visual needs to life.
             </h3>
           </div>
