@@ -99,42 +99,6 @@ export const LuxuryHero = () => {
 
       {/* Main Content */}
       <div className="relative z-20 container mx-auto px-6 text-center pt-32 md:pt-40">
-        {/* Animated Logo */}
-        <div className="mb-16 animate-cinematic-reveal">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
-            <div className="flex items-center">
-              {["K", "N", "O", "W", "S"].map((letter, i) => (
-                <span
-                  key={i}
-                  className="inline-block text-4xl sm:text-5xl md:text-7xl font-bold tracking-[0.1em] sm:tracking-[0.2em] luxury-text text-shimmer-luxury hover:scale-110 transition-all duration-300 cursor-default"
-                  style={{
-                    animation: `cinematic-reveal 1s ease-out ${i * 0.1}s both`,
-                    transform: `translateY(${Math.sin((offsetY + i * 100) * 0.01) * 10}px) translateZ(${i * 10}px)`,
-                    textShadow: "0 0 40px hsl(var(--luxury-gold) / 0.5), 0 10px 30px rgba(0,0,0,0.8)",
-                  }}
-                >
-                  {letter}
-                </span>
-              ))}
-            </div>
-            <span className="inline-block text-4xl sm:text-5xl md:text-7xl font-bold text-gradient-luxury animate-pulse">•</span>
-            <div className="flex items-center">
-              {["S", "T", "U", "D", "I", "O", "S"].map((letter, i) => (
-                <span
-                  key={i + 5}
-                  className="inline-block text-4xl sm:text-5xl md:text-7xl font-bold tracking-[0.1em] sm:tracking-[0.2em] luxury-text text-shimmer-luxury hover:scale-110 transition-all duration-300 cursor-default"
-                  style={{
-                    animation: `cinematic-reveal 1s ease-out ${(i + 5) * 0.1}s both`,
-                    transform: `translateY(${Math.sin((offsetY + (i + 5) * 100) * 0.01) * 10}px) translateZ(${(i + 5) * 10}px)`,
-                    textShadow: "0 0 40px hsl(var(--luxury-rose-gold) / 0.5), 0 10px 30px rgba(0,0,0,0.8)",
-                  }}
-                >
-                  {letter}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* Luxury Headline */}
         <div className="mb-8 animate-cinematic-reveal px-4" style={{ animationDelay: "1s" }}>
