@@ -62,7 +62,10 @@ export const CommandPalette = () => {
       </div>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput
+          placeholder="Type a command or search..."
+          className="placeholder:text-white/70"
+        />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
 
