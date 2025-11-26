@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
 */
 
@@ -126,10 +126,16 @@ All colors MUST be HSL.
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    /* Mobile optimizations */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   html {
     scroll-behavior: smooth;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
   }
 
   /* Premium Typography */
@@ -139,10 +145,31 @@ All colors MUST be HSL.
     line-height: 1.2;
   }
 
+  /* Mobile-optimized typography */
+  @media (max-width: 640px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+  }
+
   .luxury-text {
     font-family: 'Playfair Display', 'Georgia', serif;
     font-weight: 700;
     letter-spacing: 0.02em;
+  }
+
+  /* Mobile touch-friendly tap targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  @media (max-width: 768px) {
+    button, a, [role="button"] {
+      min-height: 48px;
+      min-width: 48px;
+    }
   }
 }
 
@@ -184,6 +211,14 @@ All colors MUST be HSL.
       0 0 60px hsl(var(--neon-pink) / 0.15);
   }
 
+  /* Disable 3D transforms on mobile for better performance */
+  @media (max-width: 1024px) {
+    .immersive-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px hsl(var(--neon-cyan) / 0.2);
+    }
+  }
+
   .reveal-animation {
     opacity: 0;
     transform: translateY(60px) scale(0.95);
@@ -201,6 +236,16 @@ All colors MUST be HSL.
 
   .cinematic-zoom:hover {
     transform: scale(1.05);
+  }
+
+  /* Mobile-optimized container */
+  .mobile-container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Touch-friendly spacing */
+  .mobile-spacing {
+    @apply py-12 sm:py-16 lg:py-20;
   }
 }
 
@@ -456,6 +501,16 @@ All colors MUST be HSL.
   transform: translateY(-8px);
 }
 
+/* Disable hover lift on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .hover-lift:hover {
+    transform: none;
+  }
+  .hover-lift:active {
+    transform: scale(0.98);
+  }
+}
+
 .hover-glow {
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -557,6 +612,14 @@ All colors MUST be HSL.
     0 40px 80px rgba(0, 0, 0, 0.5),
     0 0 60px hsl(var(--luxury-gold) / 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Disable 3D on mobile */
+@media (max-width: 1024px) {
+  .luxury-card-3d:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .luxury-card-3d::before {
@@ -760,6 +823,14 @@ All colors MUST be HSL.
   transform-style: preserve-3d;
 }
 
+/* Disable 3D float on mobile */
+@media (max-width: 1024px) {
+  .animate-float-3d {
+    animation: float 3s ease-in-out infinite;
+    transform-style: flat;
+  }
+}
+
 /* Luxury Gradient Backgrounds */
 .bg-luxury-gradient {
   background: linear-gradient(
@@ -840,4 +911,58 @@ All colors MUST be HSL.
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .animate-float-3d,
+  .luxury-card-3d,
+  .parallax-depth-1,
+  .parallax-depth-2,
+  .parallax-depth-3 {
+    transform: none !important;
+  }
+
+  /* Optimize backdrop blur on mobile */
+  .glass-morphism,
+  .glass-luxury {
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+  }
+
+  /* Increase touch targets */
+  button,
+  a,
+  [role="button"],
+  input,
+  textarea,
+  select {
+    min-height: 48px;
+  }
+}
+
+/* Prevent text selection during interactions on mobile */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  input,
+  textarea {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+}
+
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
