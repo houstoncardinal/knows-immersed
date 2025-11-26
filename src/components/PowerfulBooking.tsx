@@ -420,11 +420,11 @@ export const PowerfulBooking = () => {
         </div>
 
         {/* Progress Indicator */}
-        <div className="flex items-center justify-center mb-12 gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center mb-8 sm:mb-12 gap-3 sm:gap-4 px-4">
           {[
-            { step: 'calendar', label: 'Select Date & Time', icon: CalendarIcon },
-            { step: 'details', label: 'Project Details', icon: Package },
-            { step: 'payment', label: 'Secure Booking', icon: CreditCard },
+            { step: 'calendar', label: 'Select Date & Time', shortLabel: 'Date & Time', icon: CalendarIcon },
+            { step: 'details', label: 'Project Details', shortLabel: 'Details', icon: Package },
+            { step: 'payment', label: 'Secure Booking', shortLabel: 'Payment', icon: CreditCard },
           ].map((item, index) => {
             const isActive = bookingStep === item.step;
             const isCompleted = (
@@ -435,16 +435,17 @@ export const PowerfulBooking = () => {
 
             return (
               <div key={item.step} className="flex items-center">
-                <div className={`flex items-center gap-3 px-4 py-2 rounded-full transition-all ${
+                <div className={`flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-full transition-all ${
                   isActive ? 'bg-gradient-to-r from-neon-cyan to-neon-pink text-white scale-105' :
                   isCompleted ? 'bg-[hsl(var(--luxury-gold))] text-black' :
                   'bg-muted text-muted-foreground'
                 }`}>
-                  <item.icon className="w-4 h-4" />
-                  <span className="text-sm font-medium">{item.label}</span>
+                  <item.icon className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="text-xs sm:text-sm font-medium hidden sm:inline">{item.label}</span>
+                  <span className="text-xs sm:text-sm font-medium sm:hidden">{item.shortLabel}</span>
                 </div>
                 {index < 2 && (
-                  <div className={`w-12 h-1 mx-2 transition-all ${
+                  <div className={`w-6 h-1 sm:w-12 sm:h-1 mx-1 sm:mx-2 transition-all hidden sm:block ${
                     isCompleted ? 'bg-[hsl(var(--luxury-gold))]' : 'bg-muted'
                   }`} />
                 )}
