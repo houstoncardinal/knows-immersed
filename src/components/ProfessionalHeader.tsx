@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Crown, Menu, X } from "lucide-react";
 import { BookingModal } from "./BookingModal";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export const ProfessionalHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -114,10 +115,11 @@ export const ProfessionalHeader = () => {
             </nav>
 
             {/* CTA Buttons */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <ThemeSwitcher />
               <Button
                 onClick={() => setBookingOpen(true)}
-                className="hidden md:flex bg-gradient-to-r from-[hsl(var(--luxury-gold))] to-[hsl(var(--luxury-rose-gold))] hover:shadow-luxury-lg text-black font-bold px-8 py-3 animate-pulse-luxury transition-all duration-300"
+                className="hidden md:flex bg-gradient-to-r from-[hsl(var(--luxury-gold))] to-[hsl(var(--luxury-rose-gold))] hover:shadow-luxury-lg text-primary-foreground font-bold px-8 py-3 animate-pulse-luxury transition-all duration-300"
               >
                 <Crown className="w-4 h-4 mr-2" />
                 BOOK NOW
