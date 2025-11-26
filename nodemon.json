@@ -1,0 +1,16 @@
+{
+  "watch": ["src", "public", "index.html", "vite.config.ts", "package.json"],
+  "ext": "ts,tsx,js,jsx,json,css,html",
+  "ignore": ["node_modules", "dist", ".git"],
+  "delay": 1000,
+  "verbose": false,
+  "exec": "npm run dev",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "events": {
+    "restart": "echo \"🔄 Server restarting due to file changes...\"",
+    "crash": "echo \"💥 Server crashed! Restarting...\"",
+    "exit": "echo \"👋 Server stopped\""
+  }
+}

@@ -9,6 +9,13 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     historyApiFallback: true,
+    hmr: {
+      overlay: true, // Show error overlay in browser
+    },
+    watch: {
+      usePolling: false, // Use native file watching
+      interval: 300  // Check for changes every 300msinterval: 300, // Check for changes every 300ms
+    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
