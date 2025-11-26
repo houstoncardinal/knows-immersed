@@ -9,12 +9,12 @@ interface ThemeContextType {
 }
 
 const themes: { name: ThemeName; label: string; description: string }[] = [
-  { name: 'cyberpunk', label: 'Cyberpunk', description: 'Neon cyan & pink with dark vibes' },
-  { name: 'professional', label: 'Professional', description: 'Sleek, modern & corporate' },
-  { name: 'futuristic', label: 'Futuristic', description: 'High-tech with electric blues' },
-  { name: 'minimal', label: 'Minimal', description: 'Clean, elegant & understated' },
-  { name: 'luxe-gold', label: 'Luxe Gold', description: 'Premium gold & champagne tones' },
-  { name: 'ocean-breeze', label: 'Ocean Breeze', description: 'Calm teals & soft gradients' },
+  { name: 'cyberpunk', label: 'Neon', description: 'Bold cyan & magenta accents' },
+  { name: 'professional', label: 'Corporate', description: 'Clean blue, business-ready' },
+  { name: 'futuristic', label: 'Ultraviolet', description: 'Electric purple & cyan' },
+  { name: 'minimal', label: 'Midnight', description: 'Sophisticated dark blue' },
+  { name: 'luxe-gold', label: 'Luxe', description: 'Premium gold & warm tones' },
+  { name: 'ocean-breeze', label: 'Aqua', description: 'Calm teal & ocean hues' },
 ];
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

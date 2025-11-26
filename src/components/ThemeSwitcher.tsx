@@ -13,11 +13,11 @@ import {
 
 const themeColors: Record<ThemeName, { primary: string; secondary: string }> = {
   cyberpunk: { primary: '#00ffff', secondary: '#ff0080' },
-  professional: { primary: '#3b82f6', secondary: '#6366f1' },
-  futuristic: { primary: '#8b5cf6', secondary: '#06b6d4' },
-  minimal: { primary: '#171717', secondary: '#737373' },
-  'luxe-gold': { primary: '#d4af37', secondary: '#c9a961' },
-  'ocean-breeze': { primary: '#0d9488', secondary: '#0ea5e9' },
+  professional: { primary: '#3b82f6', secondary: '#818cf8' },
+  futuristic: { primary: '#8b5cf6', secondary: '#22d3ee' },
+  minimal: { primary: '#5b8def', secondary: '#8b5cf6' },
+  'luxe-gold': { primary: '#f5c342', secondary: '#e8a030' },
+  'ocean-breeze': { primary: '#14b8a6', secondary: '#38bdf8' },
 };
 
 export const ThemeSwitcher = () => {
