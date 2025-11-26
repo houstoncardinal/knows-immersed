@@ -350,16 +350,46 @@ export const LuxuryHero = memo(() => {
                 boxShadow: '0 0 20px rgba(255,255,255,0.1), 0 0 40px rgba(255,255,255,0.05)'
               }}>
                 <div className="flex items-center gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 animate-pulse" style={{
-                      background: 'linear-gradient(135deg, #ffd700, #ffed4e, #ffd700)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      filter: 'drop-shadow(0 0 12px rgba(255,215,0,0.8)) drop-shadow(0 0 24px rgba(255,215,0,0.4))',
-                      animation: 'starGlow 2s ease-in-out infinite'
-                    }} />
-                  ))}
+                  {[...Array(5)].map((_, i) => {
+                    // Theme-aware star colors - solid filled stars
+                    const getStarColor = () => {
+                      switch (theme) {
+                        case 'cyberpunk':
+                          return '#00ffff';
+                        case 'professional':
+                          return '#0066cc';
+                        case 'futuristic':
+                          return '#8000ff';
+                        case 'minimal':
+                          return '#1a365d';
+                        case 'ocean-breeze':
+                          return '#00cccc';
+                        case 'boom-headshot':
+                          return '#ff6600';
+                        case 'luxe-gold':
+                        default:
+                          return '#ff8c00'; // Orange color for default theme
+                      }
+                    };
+
+                    const getStarGlow = () => {
+                      const baseColor = getStarColor();
+                      return `drop-shadow(0 0 8px ${baseColor}80) drop-shadow(0 0 16px ${baseColor}40)`;
+                    };
+
+                    return (
+                      <Star
+                        key={i}
+                        className="w-6 h-6 animate-pulse"
+                        fill={getStarColor()}
+                        style={{
+                          filter: getStarGlow(),
+                          animation: 'starGlow 2s ease-in-out infinite',
+                          color: getStarColor()
+                        }}
+                      />
+                    );
+                  })}
                 </div>
                 <div className="text-2xl font-bold text-white mb-1" style={{
                   textShadow: '0 0 10px rgba(255,255,255,0.5), 1px 1px 2px rgba(0,0,0,0.8)'
