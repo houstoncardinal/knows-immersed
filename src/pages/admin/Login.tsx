@@ -207,8 +207,8 @@ export const AdminLogin = () => {
         </div>
       </div>
 
-      {/* Demo credentials overlay - more professional */}
-      <div className="fixed bottom-4 left-4 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-xl p-4 text-sm max-w-xs shadow-lg">
+      {/* Demo credentials overlay - positioned to avoid overlap */}
+      <div className="fixed bottom-6 left-6 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-xl p-4 text-sm max-w-xs shadow-xl z-50">
         <div className="flex items-center gap-2 mb-3">
           <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
           <p className="font-semibold text-slate-900">Demo Access</p>
@@ -217,6 +217,16 @@ export const AdminLogin = () => {
           <p><span className="font-medium">Email:</span> admin@knowsstudios.com</p>
           <p><span className="font-medium">Password:</span> admin123</p>
         </div>
+        {/* Close button for better UX */}
+        <button
+          onClick={(e) => e.currentTarget.parentElement?.remove()}
+          className="absolute top-2 right-2 w-5 h-5 flex items-center justify-center text-slate-400 hover:text-slate-600 transition-colors"
+          aria-label="Close demo info"
+        >
+          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
     </div>
   );
