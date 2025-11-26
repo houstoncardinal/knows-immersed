@@ -8,44 +8,51 @@ All colors MUST be HSL.
 
 @layer base {
   /* ============================================
-     THEME: CYBERPUNK (Default)
+     THEME: PROFESSIONAL MODERN (Default)
+     Premium design with sophisticated gradients
      ============================================ */
   :root,
   .theme-cyberpunk {
-    --background: 0 0% 5%;
+    --background: 220 25% 4%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 8%;
+    --card: 220 25% 8%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 8%;
+    --popover: 220 25% 8%;
     --popover-foreground: 0 0% 98%;
-    --primary: 180 100% 50%;
-    --primary-foreground: 0 0% 5%;
-    --secondary: 340 100% 60%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 180 100% 50%;
-    --accent-foreground: 0 0% 5%;
+    --primary: 200 85% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 280 75% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 20% 12%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 200 85% 55%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 20%;
-    --input: 0 0% 15%;
-    --ring: 180 100% 50%;
-    --radius: 0.5rem;
+    --border: 220 20% 18%;
+    --input: 220 20% 12%;
+    --ring: 200 85% 55%;
+    --radius: 0.75rem;
 
-    /* Theme-specific colors */
-    --neon-cyan: 180 100% 50%;
-    --neon-pink: 340 100% 60%;
-    --studio-dark: 0 0% 5%;
-    --studio-darker: 0 0% 3%;
+    /* Enhanced theme-specific colors */
+    --neon-cyan: 190 100% 55%;
+    --neon-pink: 320 85% 65%;
+    --studio-dark: 220 25% 4%;
+    --studio-darker: 220 30% 2%;
     --studio-light: 0 0% 98%;
-    --luxury-gold: 45 100% 65%;
-    --luxury-platinum: 0 0% 85%;
-    --luxury-bronze: 30 80% 50%;
-    --luxury-rose-gold: 15 75% 70%;
-    --luxury-champagne: 45 50% 85%;
-    --luxury-obsidian: 0 0% 8%;
-    --luxury-pearl: 0 0% 95%;
+    --luxury-gold: 42 95% 62%;
+    --luxury-platinum: 210 10% 80%;
+    --luxury-bronze: 28 70% 55%;
+    --luxury-rose-gold: 12 80% 68%;
+    --luxury-champagne: 45 45% 88%;
+    --luxury-obsidian: 220 25% 6%;
+    --luxury-pearl: 210 20% 95%;
+
+    /* Professional accent colors */
+    --accent-blue: 210 100% 60%;
+    --accent-purple: 270 70% 60%;
+    --accent-emerald: 160 85% 50%;
+    --accent-amber: 35 95% 55%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -436,10 +443,62 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Professional gradient text effects */
+  .text-gradient-professional {
+    background: linear-gradient(135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent-purple)) 50%,
+      hsl(var(--secondary)) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease infinite;
+  }
+
   .text-gradient-neon {
     @apply bg-gradient-to-r from-[hsl(var(--neon-cyan))] to-[hsl(var(--neon-pink))] bg-clip-text text-transparent;
     animation: gradient-shift 3s ease infinite;
     background-size: 200% auto;
+  }
+
+  /* Enhanced gradient overlays */
+  .bg-professional-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--studio-darker)) 0%,
+      hsl(var(--studio-dark)) 25%,
+      hsl(var(--luxury-obsidian)) 50%,
+      hsl(var(--studio-dark)) 75%,
+      hsl(var(--studio-darker)) 100%
+    );
+    position: relative;
+  }
+
+  .bg-professional-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, hsl(var(--primary) / 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, hsl(var(--secondary) / 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, hsl(var(--luxury-gold) / 0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Professional card effects */
+  .card-professional {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.9) 0%,
+      hsl(var(--card) / 0.8) 100%
+    );
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 1px 0 hsl(var(--foreground) / 0.05) inset;
   }
 
   .neon-glow-cyan {
