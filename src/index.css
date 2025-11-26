@@ -1196,7 +1196,6 @@ All colors MUST be HSL.
 }
 
 /* Sign-in component animations */
-@import "tailwindcss";
 
 @keyframes fadeSlideIn {
   to {
