@@ -6,20 +6,7 @@ import { BookingModal } from "./BookingModal";
 
 export const LuxuryHero = () => {
   const offsetY = useParallax();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [bookingOpen, setBookingOpen] = useState(false);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 30,
-        y: (e.clientY / window.innerHeight - 0.5) * 30,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   const scrollToAbout = () => {
     const element = document.getElementById("about");
@@ -29,170 +16,124 @@ export const LuxuryHero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-studio-darker">
-      {/* Cinematic Background Image with Parallax */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100">
+      {/* Professional Background Image */}
       <div
         className="absolute inset-0 z-0 transition-transform duration-500 ease-out"
         style={{
           backgroundImage: "url('/images/6410f68e1714e4bfddcd18c3_DSC08256.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "brightness(0.3) contrast(1.2) saturate(1.3)",
-          transform: `translateY(${offsetY * 0.3}px) translate(${mousePosition.x * 0.3}px, ${mousePosition.y * 0.3}px) scale(1.2)`,
+          filter: "brightness(0.4) contrast(1.1) saturate(0.8) grayscale(0.1)",
+          transform: `translateY(${offsetY * 0.2}px) scale(1.1)`,
         }}
       />
 
-      {/* Premium Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-studio-darker/80 via-studio-darker/40 to-studio-darker/90 z-10" />
-      <div className="absolute inset-0 bg-gradient-to-r from-studio-darker/60 via-transparent to-studio-darker/60 z-10" />
+      {/* Professional Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/70 to-slate-50/95 z-10" />
 
-      {/* Luxury Animated Gradient Orbs */}
-      <div
-        className="absolute inset-0 z-10 opacity-50 transition-all duration-700"
-        style={{
-          background: `
-            radial-gradient(circle at ${50 + mousePosition.x * 0.5}% ${50 + mousePosition.y * 0.5}%, hsl(var(--luxury-gold) / 0.2), transparent 40%),
-            radial-gradient(circle at ${30 + mousePosition.x * 0.3}% ${70 + mousePosition.y * 0.3}%, hsl(var(--neon-cyan) / 0.15), transparent 50%),
-            radial-gradient(circle at ${70 - mousePosition.x * 0.3}% ${30 - mousePosition.y * 0.3}%, hsl(var(--neon-pink) / 0.15), transparent 50%)
-          `,
-        }}
-      />
-
-      {/* Floating Luxury Particles */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-[hsl(var(--luxury-gold))] rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.3}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-              opacity: 0.3 + Math.random() * 0.4,
-            }}
-          />
-        ))}
+      {/* Subtle Professional Elements */}
+      <div className="absolute inset-0 z-10 opacity-30">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-slate-200/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-32 right-16 w-96 h-96 bg-slate-300/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-slate-100/10 rounded-full blur-3xl" />
       </div>
 
-      {/* Decorative Luxury Geometric Shapes */}
-      <div
-        className="absolute top-1/4 left-1/4 w-96 h-96 border border-[hsl(var(--luxury-gold))]/20 rounded-full z-10 animate-float-3d shadow-luxury-lg"
-        style={{
-          transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
-        }}
-      />
-      <div
-        className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] border border-neon-cyan/20 rounded-full z-10 animate-float-3d shadow-luxury-lg"
-        style={{
-          animationDelay: "2s",
-          transform: `translate(${-mousePosition.x * 0.3}px, ${-mousePosition.y * 0.3}px)`,
-        }}
-      />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] border border-neon-pink/10 rounded-full z-10 animate-float-3d shadow-luxury-lg"
-        style={{
-          animationDelay: "4s",
-          transform: `translate(calc(-50% + ${mousePosition.x * 0.2}px), calc(-50% + ${mousePosition.y * 0.2}px))`,
-        }}
-      />
+      {/* Professional Grid Pattern */}
+      <div className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(slate-300 1px, transparent 1px),
+            linear-gradient(90deg, slate-300 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
 
       {/* Main Content */}
       <div className="relative z-20 container mx-auto px-6 text-center pt-32 md:pt-40">
 
-        {/* Luxury Headline */}
-        <div className="mb-8 animate-cinematic-reveal px-4" style={{ animationDelay: "1s" }}>
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-6 leading-tight luxury-text text-center">
-            <span
-              className="block mb-2 sm:mb-4 hover:scale-105 transition-transform duration-500"
-              style={{
-                textShadow: "0 20px 60px rgba(0,0,0,0.8), 0 0 80px hsl(var(--luxury-gold) / 0.3)",
-              }}
-            >
-              Premium
-            </span>
-            <span
-              className="text-gradient-premium block hover:scale-105 transition-transform duration-500 text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] leading-none whitespace-nowrap"
-              style={{
-                textShadow: "0 0 80px hsl(var(--neon-cyan) / 0.6), 0 20px 60px rgba(0,0,0,0.8)",
-              }}
-            >
-              CYC&nbsp;WALL
-            </span>
-            <span
-              className="block mt-2 sm:mt-4 text-2xl sm:text-4xl md:text-5xl lg:text-6xl hover:scale-105 transition-transform duration-500 leading-tight px-2"
-              style={{
-                textShadow: "0 20px 60px rgba(0,0,0,0.8)",
-              }}
-            >
-              Film &amp; Photography Studio
-            </span>
+        {/* Professional Headline */}
+        <div className="mb-12 animate-fade-in-up">
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-slate-100 border border-slate-200 rounded-full text-sm font-medium text-slate-700 mb-8">
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+            North Hollywood's Premier Creative Studio
+          </div>
+
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-8 leading-tight text-slate-900">
+            <span className="block mb-4">KNOWS</span>
+            <span className="block text-slate-700">STUDIOS</span>
           </h1>
+
+          <div className="w-24 h-1 bg-gradient-to-r from-slate-300 to-slate-400 mx-auto mb-8 rounded-full"></div>
+
+          <p className="text-xl md:text-2xl text-slate-600 mb-6 max-w-4xl mx-auto font-light leading-relaxed">
+            Professional CYC Wall Studio for Film & Photography
+          </p>
+
+          <p className="text-lg text-slate-500 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Where creativity meets precision. A world-class facility designed for visionary artists,
+            acclaimed filmmakers, and professional photographers seeking excellence.
+          </p>
         </div>
 
-        {/* Luxury Tagline */}
-        <div className="animate-slide-in-up" style={{ animationDelay: "1.3s" }}>
-          <p className="text-2xl md:text-3xl text-muted-foreground mb-4 max-w-4xl mx-auto font-light">
-            Where <span className="text-gradient-luxury font-semibold">Vision</span> Meets{" "}
-            <span className="text-gradient-premium font-semibold">Reality</span>
-          </p>
-          <p className="text-lg md:text-xl text-muted-foreground/80 mb-12 max-w-3xl mx-auto">
-            North Hollywood's premier creative sanctuary for visionary artists, acclaimed filmmakers, and professional photographers
-          </p>
-        </div>
-
-        {/* Premium CTA Buttons */}
-        <div
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-bounce-in"
-          style={{ animationDelay: "1.6s" }}
-        >
+        {/* Professional CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
           <Button
             onClick={() => setBookingOpen(true)}
             size="lg"
-            className="bg-gradient-to-r from-[hsl(var(--luxury-gold))] via-[hsl(var(--luxury-rose-gold))] to-[hsl(var(--luxury-gold))] hover:shadow-luxury-xl text-black font-bold text-xl px-12 py-8 group shadow-luxury-lg animate-pulse-luxury transition-all duration-500"
+            className="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-lg px-12 py-6 shadow-lg hover:shadow-xl transition-all duration-300 group"
           >
-            <Crown className="mr-3 w-6 h-6 group-hover:rotate-12 transition-transform" />
-            RESERVE YOUR SESSION
-            <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
+            <Crown className="mr-3 w-5 h-5 group-hover:rotate-12 transition-transform" />
+            Reserve Your Session
+            <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
 
           <Button
             onClick={scrollToAbout}
             size="lg"
             variant="outline"
-            className="glass-luxury border-[hsl(var(--luxury-gold))]/30 text-foreground hover:border-[hsl(var(--luxury-gold))] hover:shadow-luxury-md font-bold text-xl px-12 py-8 group transition-all duration-500"
+            className="border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold text-lg px-12 py-6 shadow-sm hover:shadow-md transition-all duration-300 group"
           >
-            <Play className="mr-3 w-6 h-6 group-hover:scale-110 transition-transform" />
-            VIRTUAL TOUR
+            <Play className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform" />
+            Explore Studio
           </Button>
         </div>
 
-        {/* Trust Indicators */}
-        <div
-          className="mt-16 flex flex-wrap gap-8 justify-center items-center animate-slide-in-up"
-          style={{ animationDelay: "1.9s" }}
-        >
-          <div className="flex items-center gap-2 glass-morphism px-6 py-3 rounded-lg">
-            <Sparkles className="w-5 h-5 text-[hsl(var(--luxury-gold))]" />
-            <span className="text-sm font-semibold">5-Star Rated</span>
+        {/* Professional Trust Indicators */}
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-slate-100 border border-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Sparkles className="w-8 h-8 text-slate-600" />
+            </div>
+            <h3 className="font-bold text-slate-900 mb-2">5-Star Rated</h3>
+            <p className="text-sm text-slate-500">Trusted by industry professionals</p>
           </div>
-          <div className="flex items-center gap-2 glass-morphism px-6 py-3 rounded-lg">
-            <Crown className="w-5 h-5 text-[hsl(var(--luxury-gold))]" />
-            <span className="text-sm font-semibold">VIP Service</span>
+
+          <div className="text-center">
+            <div className="w-16 h-16 bg-slate-100 border border-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Crown className="w-8 h-8 text-slate-600" />
+            </div>
+            <h3 className="font-bold text-slate-900 mb-2">Premium Service</h3>
+            <p className="text-sm text-slate-500">Dedicated support & VIP treatment</p>
           </div>
-          <div className="flex items-center gap-2 glass-morphism px-6 py-3 rounded-lg">
-            <Sparkles className="w-5 h-5 text-neon-cyan" />
-            <span className="text-sm font-semibold">Premium Equipment</span>
+
+          <div className="text-center">
+            <div className="w-16 h-16 bg-slate-100 border border-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Sparkles className="w-8 h-8 text-slate-600" />
+            </div>
+            <h3 className="font-bold text-slate-900 mb-2">Professional Equipment</h3>
+            <p className="text-sm text-slate-500">Industry-leading gear & technology</p>
           </div>
         </div>
       </div>
 
-      {/* Luxury Scroll Indicator */}
+      {/* Professional Scroll Indicator */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-        <div className="w-8 h-12 border-2 border-[hsl(var(--luxury-gold))]/50 rounded-full flex items-start justify-center p-2 glass-morphism shadow-luxury-md">
-          <div className="w-1.5 h-4 bg-gradient-to-b from-[hsl(var(--luxury-gold))] to-transparent rounded-full animate-pulse" />
+        <div className="w-8 h-12 border-2 border-slate-300 rounded-full flex items-start justify-center p-2 bg-white/80 backdrop-blur-sm shadow-sm">
+          <div className="w-1.5 h-4 bg-slate-400 rounded-full animate-pulse" />
         </div>
-        <p className="text-xs text-muted-foreground mt-2 tracking-wider uppercase">Scroll</p>
+        <p className="text-xs text-slate-500 mt-2 tracking-wider uppercase font-medium">Scroll to explore</p>
       </div>
 
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
