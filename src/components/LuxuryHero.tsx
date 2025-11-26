@@ -104,7 +104,7 @@ export const LuxuryHero = () => {
         <div className="mb-8 animate-cinematic-reveal px-4" style={{ animationDelay: "1s" }}>
           <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-6 leading-tight luxury-text text-center">
             <span
-              className="block mb-2 sm:mb-4 hover:scale-105 transition-transform duration-500 inline-block"
+              className="block mb-2 sm:mb-4 hover:scale-105 transition-transform duration-500"
               style={{
                 textShadow: "0 20px 60px rgba(0,0,0,0.8), 0 0 80px hsl(var(--luxury-gold) / 0.3)",
               }}
@@ -112,20 +112,20 @@ export const LuxuryHero = () => {
               Premium
             </span>
             <span
-              className="text-gradient-premium block hover:scale-105 transition-transform duration-500 inline-block text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] leading-none"
+              className="text-gradient-premium block hover:scale-105 transition-transform duration-500 text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] leading-none whitespace-nowrap"
               style={{
                 textShadow: "0 0 80px hsl(var(--neon-cyan) / 0.6), 0 20px 60px rgba(0,0,0,0.8)",
               }}
             >
-              CYC WALL
+              CYC&nbsp;WALL
             </span>
             <span
-              className="block mt-2 sm:mt-4 text-3xl sm:text-5xl md:text-6xl lg:text-7xl hover:scale-105 transition-transform duration-500 inline-block leading-tight"
+              className="block mt-2 sm:mt-4 text-2xl sm:text-4xl md:text-5xl lg:text-6xl hover:scale-105 transition-transform duration-500 leading-tight px-2"
               style={{
                 textShadow: "0 20px 60px rgba(0,0,0,0.8)",
               }}
             >
-              Film & Photography Studio
+              Film &amp; Photography Studio
             </span>
           </h1>
         </div>
