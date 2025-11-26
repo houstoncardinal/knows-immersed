@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Sparkles, Crown, Bot, Zap } from "lucide-react";
+import { ArrowRight, Play, Star, Crown, Bot, Zap } from "lucide-react";
 import { useParallax } from "@/hooks/useScrollAnimation";
 import { useEffect, useState, useCallback, useRef, memo } from "react";
 import { BookingModal } from "./BookingModal";
@@ -184,9 +184,10 @@ export const LuxuryHero = memo(() => {
         <div className="max-w-6xl mx-auto">
 
           {/* Professional Badge */}
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full text-sm font-semibold text-slate-700 mb-8 shadow-lg">
+          <div className="inline-flex items-center gap-3 px-4 sm:px-6 py-3 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full text-xs sm:text-sm font-semibold text-slate-700 mb-8 shadow-lg whitespace-nowrap">
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-            North Hollywood's Premier Creative Studio
+            <span className="hidden sm:inline">North Hollywood's Premier Creative Studio</span>
+            <span className="sm:hidden">N. Hollywood Premier Studio</span>
           </div>
 
           {/* Enhanced Neural Headline with Sound Interactions */}
@@ -350,8 +351,13 @@ export const LuxuryHero = memo(() => {
               }}>
                 <div className="flex items-center gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Sparkles key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400 animate-pulse" style={{
-                      filter: 'drop-shadow(0 0 8px rgba(255,215,0,0.6))'
+                    <Star key={i} className="w-6 h-6 animate-pulse" style={{
+                      background: 'linear-gradient(135deg, #ffd700, #ffed4e, #ffd700)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      filter: 'drop-shadow(0 0 12px rgba(255,215,0,0.8)) drop-shadow(0 0 24px rgba(255,215,0,0.4))',
+                      animation: 'starGlow 2s ease-in-out infinite'
                     }} />
                   ))}
                 </div>
