@@ -119,13 +119,13 @@ export const AdminBookings = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "confirmed":
-        return "bg-green-500/10 text-green-500 border-green-500/20";
+        return "bg-emerald-100 text-emerald-800 border border-emerald-200";
       case "pending":
-        return "bg-yellow-500/10 text-yellow-500 border-yellow-500/20";
+        return "bg-amber-100 text-amber-800 border border-amber-200";
       case "cancelled":
-        return "bg-red-500/10 text-red-500 border-red-500/20";
+        return "bg-red-100 text-red-800 border border-red-200";
       default:
-        return "bg-blue-500/10 text-blue-500 border-blue-500/20";
+        return "bg-slate-100 text-slate-800 border border-slate-200";
     }
   };
 
@@ -152,26 +152,39 @@ export const AdminBookings = () => {
 
   return (
     <AdminLayout>
-      <div className="space-y-6">
-        {/* Header with Actions */}
-        <div className="flex flex-col gap-4">
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-bold mb-2">Booking Management</h1>
-            <p className="text-muted-foreground text-sm sm:text-base">Manage and track all studio bookings</p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <Button variant="outline" className="flex-1 sm:flex-none">
-              <Download className="w-4 h-4 mr-2" />
-              Export
-            </Button>
-            <Button className="bg-gradient-to-r from-neon-cyan to-neon-pink hover:opacity-90 flex-1 sm:flex-none">
-              <Plus className="w-4 h-4 mr-2" />
-              New Booking
-            </Button>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+        <div className="space-y-8 p-8">
+          {/* Professional Header */}
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h1 className="text-4xl font-bold text-slate-900 mb-2">Booking Management</h1>
+                <p className="text-lg text-slate-600">Advanced booking management and scheduling system</p>
+                <div className="flex items-center gap-4 mt-4">
+                  <div className="flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    {filteredBookings.length} Active Bookings
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    Last updated: {new Date().toLocaleTimeString()}
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50">
+                  <Download className="w-4 h-4 mr-2" />
+                  Export Data
+                </Button>
+                <Button className="bg-slate-900 hover:bg-slate-800 text-white">
+                  <Plus className="w-4 h-4 mr-2" />
+                  New Booking
+                </Button>
+              </div>
           </div>
         </div>
+      </div>
 
-        {/* Filters */}
+      {/* Filters */}
         <Card className="p-6 bg-card/50 backdrop-blur-sm border-border">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1">

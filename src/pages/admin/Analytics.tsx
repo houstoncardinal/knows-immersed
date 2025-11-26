@@ -78,82 +78,110 @@ export const AdminAnalytics = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "high":
-        return "text-green-500";
+        return "text-emerald-600";
       case "medium":
-        return "text-yellow-500";
+        return "text-amber-600";
       case "low":
-        return "text-red-500";
+        return "text-red-600";
       default:
-        return "text-muted-foreground";
+        return "text-slate-500";
     }
   };
 
   return (
     <AdminLayout>
-      <div className="space-y-6">
-        {/* Header */}
-        <div className="flex flex-col gap-4">
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-bold mb-2">Analytics Dashboard</h1>
-            <p className="text-muted-foreground text-sm sm:text-base">Comprehensive insights into your studio performance</p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <Select value={timeRange} onValueChange={setTimeRange}>
-              <SelectTrigger className="w-full sm:w-40">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="7days">Last 7 days</SelectItem>
-                <SelectItem value="30days">Last 30 days</SelectItem>
-                <SelectItem value="3months">Last 3 months</SelectItem>
-                <SelectItem value="12months">Last 12 months</SelectItem>
-              </SelectContent>
-            </Select>
-            <div className="flex gap-2">
-              <Button variant="outline" className="flex-1 sm:flex-none">
-                <Download className="w-4 h-4 mr-2" />
-                <span className="hidden sm:inline">Export Report</span>
-                <span className="sm:hidden">Export</span>
-              </Button>
-              <Button variant="outline" className="flex-1 sm:flex-none">
-                <RefreshCw className="w-4 h-4 mr-2" />
-                <span className="hidden sm:inline">Refresh</span>
-              </Button>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+        <div className="space-y-8 p-8">
+          {/* Professional Header */}
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h1 className="text-4xl font-bold text-slate-900 mb-2">Analytics & Insights</h1>
+                <p className="text-lg text-slate-600">Advanced performance analytics and business intelligence</p>
+                <div className="flex items-center gap-4 mt-4">
+                  <div className="flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    Live Data
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    Last updated: {new Date().toLocaleTimeString()}
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <Select value={timeRange} onValueChange={setTimeRange}>
+                  <SelectTrigger className="w-48 border-slate-300">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="7days">Last 7 days</SelectItem>
+                    <SelectItem value="30days">Last 30 days</SelectItem>
+                    <SelectItem value="3months">Last 3 months</SelectItem>
+                    <SelectItem value="12months">Last 12 months</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50">
+                  <Download className="w-4 h-4 mr-2" />
+                  Export Report
+                </Button>
+                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50">
+                  <RefreshCw className="w-4 h-4 mr-2" />
+                  Refresh
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Key Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {clientMetrics.map((metric, index) => (
-            <Card key={index} className="p-6 bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">{metric.metric}</p>
-                  <h3 className="text-3xl font-bold">{metric.value}</h3>
+          {/* Advanced KPI Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {clientMetrics.map((metric, index) => (
+              <Card
+                key={index}
+                className="relative overflow-hidden bg-white border border-slate-200 hover:border-slate-300 hover:shadow-xl transition-all duration-300 group"
+              >
+                {/* Background Pattern */}
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
+                  <BarChart3 className="w-full h-full" />
                 </div>
-                <div className={`p-3 rounded-lg bg-gradient-to-br ${
-                  metric.trend === "up"
-                    ? "from-green-400 to-emerald-500"
-                    : "from-red-400 to-red-500"
-                }`}>
-                  {metric.trend === "up" ? (
-                    <TrendingUp className="w-6 h-6 text-white" />
-                  ) : (
-                    <TrendingDown className="w-6 h-6 text-white" />
-                  )}
+
+                <div className="p-8 relative">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">{metric.metric}</p>
+                      <h3 className="text-4xl font-bold text-slate-900 mb-1">{metric.value}</h3>
+                      <div className="flex items-center gap-2">
+                        <TrendingUp className={`w-4 h-4 ${metric.trend === "up" ? "text-emerald-600" : "text-red-600"}`} />
+                        <span className={`text-sm font-bold ${metric.trend === "up" ? "text-emerald-600" : "text-red-600"}`}>
+                          {metric.change}
+                        </span>
+                        <span className="text-sm text-slate-500">vs last period</span>
+                      </div>
+                    </div>
+                    <div className={`p-4 rounded-2xl ${
+                      metric.trend === "up" ? "bg-emerald-50" : "bg-red-50"
+                    } group-hover:scale-110 transition-transform duration-300`}>
+                      {metric.trend === "up" ? (
+                        <TrendingUp className="w-8 h-8 text-emerald-600" />
+                      ) : (
+                        <TrendingDown className="w-8 h-8 text-red-600" />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="w-full bg-slate-100 rounded-full h-2 mb-2">
+                    <div
+                      className={`h-2 rounded-full transition-all duration-500 ${
+                        metric.trend === "up" ? "bg-emerald-500" : "bg-red-500"
+                      }`}
+                      style={{ width: "85%" }}
+                    ></div>
+                  </div>
+                  <p className="text-xs text-slate-500">Performance: Excellent</p>
                 </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className={`text-sm font-medium ${
-                  metric.trend === "up" ? "text-green-500" : "text-red-500"
-                }`}>
-                  {metric.change}
-                </span>
-                <span className="text-sm text-muted-foreground">vs last period</span>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            ))}
+          </div>
         </div>
 
         {/* Charts Section */}

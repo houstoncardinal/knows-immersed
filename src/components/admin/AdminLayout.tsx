@@ -138,17 +138,24 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
   const ThemeSelector = () => (
     <div className="relative">
       <Button
-        variant="ghost"
+        variant="outline"
         size="sm"
         onClick={() => setShowThemeMenu(!showThemeMenu)}
-        className="flex items-center gap-2"
+        className={`flex items-center gap-2 border-slate-300 text-slate-700 hover:bg-slate-50 transition-colors ${
+          theme === 'professional' ? 'bg-white' : theme === 'dark' ? 'bg-gray-800 border-gray-600 text-white hover:bg-gray-700' : 'bg-white'
+        }`}
       >
         <Palette className="w-4 h-4" />
-        <span className="capitalize">{theme}</span>
+        <span className="capitalize text-sm">{theme}</span>
       </Button>
 
       {showThemeMenu && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+        <div className={`absolute right-0 mt-2 w-48 rounded-lg shadow-xl border py-2 z-50 ${
+          theme === 'professional' ? 'bg-white border-slate-200' :
+          theme === 'dark' ? 'bg-gray-800 border-gray-600' :
+          theme === 'light' ? 'bg-white border-gray-200' :
+          'bg-studio-darker border-border'
+        }`}>
           {[
             { name: 'professional', icon: Monitor, label: 'Professional' },
             { name: 'dark', icon: Moon, label: 'Dark' },
@@ -163,14 +170,24 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
                   setTheme(themeOption.name as Theme);
                   setShowThemeMenu(false);
                 }}
-                className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-50 transition-colors ${
-                  theme === themeOption.name ? 'bg-blue-50 text-blue-700' : 'text-gray-700'
+                className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors rounded-md mx-1 ${
+                  theme === themeOption.name ? (
+                    theme === 'professional' ? 'bg-slate-100 text-slate-900' :
+                    theme === 'dark' ? 'bg-gray-700 text-white' :
+                    theme === 'light' ? 'bg-blue-50 text-blue-700' :
+                    'bg-primary/10 text-primary'
+                  ) : (
+                    theme === 'professional' ? 'text-slate-700 hover:bg-slate-50' :
+                    theme === 'dark' ? 'text-gray-300 hover:bg-gray-700' :
+                    theme === 'light' ? 'text-gray-700 hover:bg-gray-50' :
+                    'text-foreground hover:bg-muted/50'
+                  )
                 }`}
               >
                 <Icon className="w-4 h-4" />
-                <span>{themeOption.label}</span>
+                <span className="font-medium">{themeOption.label}</span>
                 {theme === themeOption.name && (
-                  <div className="ml-auto w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="ml-auto w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                 )}
               </button>
             );
