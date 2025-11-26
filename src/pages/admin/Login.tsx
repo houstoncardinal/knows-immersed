@@ -1,30 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { SignInPage, Testimonial } from "@/components/ui/sign-in";
+import { SignInPage } from "@/components/ui/sign-in";
 import { toast } from "sonner";
-
-// KNOWS STUDIOS testimonials for admin login
-const adminTestimonials: Testimonial[] = [
-  {
-    avatarSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    name: "Sarah Martinez",
-    handle: "@sarahfilm",
-    text: "KNOWS STUDIOS transformed our production workflow. The admin tools are incredibly intuitive and powerful."
-  },
-  {
-    avatarSrc: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    name: "Marcus Chen",
-    handle: "@marcusdirects",
-    text: "Managing bookings and equipment has never been easier. The dashboard gives us complete control over our studio operations."
-  },
-  {
-    avatarSrc: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-    name: "Emily Rodriguez",
-    handle: "@emilycreates",
-    text: "The analytics and reporting features help us optimize our studio usage and maximize revenue. Game-changing!"
-  },
-];
 
 export const AdminLogin = () => {
   const { login } = useAuth();
@@ -79,7 +57,6 @@ export const AdminLogin = () => {
         }
         description="Access your admin dashboard to manage bookings, equipment, and studio operations"
         heroImageSrc="https://images.unsplash.com/photo-1642615835477-d303d7dc9ee9?w=2160&q=80"
-        testimonials={adminTestimonials}
         onSignIn={handleSignIn}
         onGoogleSignIn={handleGoogleSignIn}
         onResetPassword={handleResetPassword}
