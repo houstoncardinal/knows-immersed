@@ -5,6 +5,7 @@ import { About } from "@/components/About";
 import { Equipment } from "@/components/Equipment";
 import { LuxuryGallery } from "@/components/LuxuryGallery";
 import { Contact } from "@/components/Contact";
+import { InstagramFeed } from "@/components/InstagramFeed";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { StatsSection } from "@/components/StatsSection";
 import { FloatingCTA } from "@/components/FloatingCTA";
@@ -100,6 +101,11 @@ const Index = () => {
           <div id="contact">
             <Contact />
           </div>
+        </ScrollReveal>
+
+        {/* Instagram Feed Section */}
+        <ScrollReveal direction="up" delay={200}>
+          <InstagramFeed />
         </ScrollReveal>
 
         <FloatingCTA />

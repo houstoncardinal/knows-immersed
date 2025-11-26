@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail, Phone, Instagram } from "lucide-react";
 import { BookingModal } from "./BookingModal";
 import { useState } from "react";
 
@@ -27,7 +27,7 @@ export const Contact = () => {
             </Button>
           </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           <Card className="bg-card/30 backdrop-blur-sm border-border p-8 text-center group hover:border-primary/50 transition-all">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors">
               <MapPin className="w-8 h-8 text-primary" />
@@ -63,6 +63,24 @@ export const Contact = () => {
             >
               323 609 3356
             </a>
+          </Card>
+
+          <Card className="bg-card/30 backdrop-blur-sm border-border p-8 text-center group hover:border-primary/50 transition-all">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+              <Instagram className="w-8 h-8 text-white drop-shadow-lg" />
+            </div>
+            <h3 className="font-bold text-xl mb-2">FOLLOW</h3>
+            <a
+              href="https://www.instagram.com/knowsstudios"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-pink-500 transition-colors font-medium"
+            >
+              @knowsstudios
+            </a>
+            <p className="text-xs text-muted-foreground mt-2">
+              Behind-the-scenes & client work
+            </p>
           </Card>
         </div>
       </div>
