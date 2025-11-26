@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { AdminLayout } from "@/components/admin/AdminLayout";
+import { AdminLayout, useTheme } from "@/components/admin/AdminLayout";
 import { ActivityLog } from "@/components/admin/ActivityLog";
 import {
   Calendar,
