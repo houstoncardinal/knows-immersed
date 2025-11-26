@@ -16,6 +16,10 @@ import { AdminProjects } from "./pages/admin/Projects";
 import { AdminEquipment } from "./pages/admin/Equipment";
 import { EnhancedAnalytics } from "./pages/admin/EnhancedAnalytics";
 import { AdminSettings } from "./pages/admin/Settings";
+import { Storyboard } from "./pages/admin/Storyboard";
+import { Moodboard } from "./pages/admin/Moodboard";
+import { Script } from "./pages/admin/Script";
+import { Timeline } from "./pages/admin/Timeline";
 import { NotificationProvider } from "./components/admin/NotificationProvider";
 import { useAuth } from "@/contexts/AuthContext";
 import { Navigate } from "react-router-dom";
@@ -101,6 +105,39 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <EnhancedAnalytics />
+                </ProtectedRoute>
+              }
+            />
+            {/* Creative Tools for Video Directors */}
+            <Route
+              path="/admin/storyboard"
+              element={
+                <ProtectedRoute>
+                  <Storyboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/moodboard"
+              element={
+                <ProtectedRoute>
+                  <Moodboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/script"
+              element={
+                <ProtectedRoute>
+                  <Script />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/timeline"
+              element={
+                <ProtectedRoute>
+                  <Timeline />
                 </ProtectedRoute>
               }
             />

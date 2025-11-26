@@ -18,6 +18,10 @@ import {
   Menu,
   X,
   ChevronDown,
+  Film,
+  Palette,
+  FileText,
+  Clock,
 } from "lucide-react";
 
 interface AdminLayoutProps {
@@ -31,6 +35,11 @@ const navItems = [
   { path: "/admin/projects", icon: Briefcase, label: "Projects" },
   { path: "/admin/equipment", icon: Package, label: "Equipment" },
   { path: "/admin/analytics", icon: BarChart3, label: "Analytics" },
+  // Creative Tools for Video Directors
+  { path: "/admin/storyboard", icon: Film, label: "Storyboard" },
+  { path: "/admin/moodboard", icon: Palette, label: "Mood Board" },
+  { path: "/admin/script", icon: FileText, label: "Script" },
+  { path: "/admin/timeline", icon: Clock, label: "Timeline" },
   { path: "/admin/settings", icon: Settings, label: "Settings" },
 ];
 
