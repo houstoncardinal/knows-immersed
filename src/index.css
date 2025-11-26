@@ -154,51 +154,51 @@ All colors MUST be HSL.
   }
 
   /* ============================================
-     THEME: MINIMAL
-     Clean, elegant, understated
+     THEME: MIDNIGHT
+     Sophisticated dark blue, elegant & refined
      ============================================ */
   .theme-minimal {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 45%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 230 25% 8%;
+    --foreground: 220 20% 95%;
+    --card: 230 25% 11%;
+    --card-foreground: 220 20% 95%;
+    --popover: 230 25% 11%;
+    --popover-foreground: 220 20% 95%;
+    --primary: 220 70% 55%;
+    --primary-foreground: 220 20% 98%;
+    --secondary: 250 50% 55%;
+    --secondary-foreground: 220 20% 98%;
+    --muted: 230 20% 15%;
+    --muted-foreground: 220 15% 55%;
+    --accent: 220 70% 55%;
+    --accent-foreground: 220 20% 98%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 9%;
+    --destructive-foreground: 220 20% 98%;
+    --border: 230 20% 18%;
+    --input: 230 20% 15%;
+    --ring: 220 70% 55%;
 
-    --neon-cyan: 0 0% 20%;
-    --neon-pink: 0 0% 45%;
-    --studio-dark: 0 0% 100%;
-    --studio-darker: 0 0% 98%;
-    --studio-light: 0 0% 9%;
-    --luxury-gold: 0 0% 20%;
-    --luxury-platinum: 0 0% 60%;
-    --luxury-bronze: 0 0% 45%;
-    --luxury-rose-gold: 0 0% 50%;
-    --luxury-champagne: 0 0% 95%;
-    --luxury-obsidian: 0 0% 98%;
-    --luxury-pearl: 0 0% 100%;
+    --neon-cyan: 220 70% 55%;
+    --neon-pink: 250 50% 55%;
+    --studio-dark: 230 25% 8%;
+    --studio-darker: 230 25% 5%;
+    --studio-light: 220 20% 95%;
+    --luxury-gold: 220 70% 60%;
+    --luxury-platinum: 220 15% 70%;
+    --luxury-bronze: 250 50% 55%;
+    --luxury-rose-gold: 220 70% 65%;
+    --luxury-champagne: 220 20% 88%;
+    --luxury-obsidian: 230 25% 8%;
+    --luxury-pearl: 220 20% 95%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 0 0% 9%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 9%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 0 0% 9%;
+    --sidebar-background: 230 25% 11%;
+    --sidebar-foreground: 220 20% 95%;
+    --sidebar-primary: 220 70% 55%;
+    --sidebar-primary-foreground: 220 20% 98%;
+    --sidebar-accent: 230 20% 15%;
+    --sidebar-accent-foreground: 220 20% 95%;
+    --sidebar-border: 230 20% 18%;
+    --sidebar-ring: 220 70% 55%;
   }
 
   /* ============================================
@@ -344,6 +344,16 @@ All colors MUST be HSL.
     /* Mobile optimizations */
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+
+    /* Smooth theme transitions */
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  /* Smooth theme transitions for all elements */
+  *,
+  *::before,
+  *::after {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   html {
