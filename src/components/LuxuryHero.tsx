@@ -267,9 +267,7 @@ export const LuxuryHero = memo(() => {
                   <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 bg-gradient-to-r from-slate-900/95 to-slate-800/95 text-cyan-300 text-sm px-4 py-3 rounded-xl border border-cyan-400/60 opacity-0 group-hover/robot:opacity-100 transition-all duration-500 whitespace-nowrap shadow-2xl backdrop-blur-md transform translate-y-2 group-hover/robot:translate-y-0">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                      <span className="font-semibold">KNOWS AI</span>
-                      <span className="text-cyan-400">•</span>
-                      <span className="text-xs opacity-90">Ready to Assist!</span>
+                      <span className="font-semibold text-lg">HOW CAN I HELP?</span>
                     </div>
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-gradient-to-r from-slate-900/95 to-slate-800/95 border-l border-t border-cyan-400/60 rotate-45"></div>
 
