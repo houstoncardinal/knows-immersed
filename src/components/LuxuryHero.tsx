@@ -264,15 +264,15 @@ export const LuxuryHero = memo(() => {
                   </div>
 
                   {/* Enhanced Interactive Tooltip */}
-                  <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 bg-gradient-to-r from-slate-900/95 to-slate-800/95 text-cyan-300 text-sm px-4 py-3 rounded-xl border border-cyan-400/60 opacity-0 group-hover/robot:opacity-100 transition-all duration-500 whitespace-nowrap shadow-2xl backdrop-blur-md transform translate-y-2 group-hover/robot:translate-y-0">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                      <span className="font-semibold text-lg">HOW CAN I HELP?</span>
+                  <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 bg-black/90 text-white text-lg px-6 py-4 rounded-xl border-2 border-cyan-400 shadow-2xl backdrop-blur-md opacity-0 group-hover/robot:opacity-100 transition-all duration-500 whitespace-nowrap transform translate-y-2 group-hover/robot:translate-y-0">
+                    <div className="flex items-center gap-3">
+                      <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
+                      <span className="font-bold text-xl tracking-wide">HI! HOW CAN I HELP YOU?</span>
                     </div>
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-gradient-to-r from-slate-900/95 to-slate-800/95 border-l border-t border-cyan-400/60 rotate-45"></div>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-black/90 border-l-2 border-t-2 border-cyan-400 rotate-45"></div>
 
-                    {/* Tooltip Glow Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 rounded-xl blur-sm -z-10"></div>
+                    {/* Enhanced Glow Effect for Better Visibility */}
+                    <div className="absolute inset-0 bg-cyan-400/20 rounded-xl blur-md -z-10"></div>
                   </div>
 
                   {/* Character Status Indicator */}
